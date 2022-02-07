@@ -1,9 +1,11 @@
 from multiprocessing import connection
 from re import T
+from numpy import int64
 import pandas as pd
 import psycopg2 as pg
 from sqlalchemy import create_engine
 from datetime import datetime
+import pyperclip
 tempo = datetime.now()
 
 
@@ -13,18 +15,24 @@ engine = create_engine('postgresql://postgres:160587pvcdacr4sh-pvCr4sh_PV@localh
 #Lista
 
 #Query
-def SELECT_simples(sql):
-    df = pd.read_sql_query(sql, con=engine)
-    print(df)
-    return sql
-
 def SELECT(sql):
     try:
-        df = pd.read_sql_query(sql, con=engine)
+        df = str(pd.read_sql_query(sql, con=engine))
         print(df)
+        try:
+            copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+            if copiar == 1:
+                pyperclip.copy(df)
+                print('''
+Copiado com sucesso!
+''')
+            else:
+                query_adicional()
+        except ValueError:
+            query_adicional()
     finally: 
         query_adicional()
-    return sql
+    return df
 
 #Para fazer a atualização de base MUDAAAAAAAAAAR
 def SELECT_base():
@@ -97,7 +105,7 @@ está correto? 1 para "sim" 0 para "não". '''))
             print('O valor não corresponde. Tente novamente')
     return sql
 
-#INSERT INTO player_info MUDAAAAAAAAAAR
+#INSERT INTO player
 def commit_player():
     confirmacao = False
     while confirmacao == False:
@@ -130,7 +138,7 @@ está correto? 1 para "sim" 0 para "não". '''))
             print('O valor não corresponde. Tente novamente')
     return sql
 
-#INSERT INTO pp_info MUDAAAAAAAAAAR
+#INSERT INTO pp
 def commit_pp():
     confirmacao = False
     while confirmacao == False:
@@ -186,7 +194,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}');'''
                 else: 
                     id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -199,7 +207,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_traco_unico_1});'''
                     else:
                         id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -225,7 +233,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -236,7 +244,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1}, {id_traco_unico_1});'''
                         else: # 0 HIDEN 1 KKG E 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))                 
@@ -248,7 +256,7 @@ def commit_pp():
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                
                 else:
@@ -262,7 +270,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -273,7 +281,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1});'''
                         else: # SEM HIDEN 3 KKG 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -284,7 +292,7 @@ def commit_pp():
             registro_ninja, data_criacao,id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
         else:
@@ -300,7 +308,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_hiden_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -311,7 +319,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_hiden_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_traco_unico_1});''' 
                         else: # 1 HIDEN 0 KKG E 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -338,7 +346,7 @@ def commit_pp():
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1});'''
                         else:
                             id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -349,7 +357,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_traco_unico_1});'''
                             else: # 1 HIDEN 1 KKG E 3 TRAÇO
                                 id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -360,7 +368,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                  
                     else:
@@ -374,7 +382,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                         else:
                             id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -387,7 +395,7 @@ def commit_pp():
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1},{id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1});'''
                             else:
                                 id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -398,7 +406,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
             else:
                 id_hiden_3 = float(input('3° Hiden: '))
@@ -412,7 +420,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -423,7 +431,7 @@ def commit_pp():
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_traco_unico_1});'''
                         else: # 3 HIDEN 0 KKG E 3 LAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))    
@@ -435,7 +443,7 @@ def commit_pp():
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''   
                 else:
@@ -450,7 +458,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1});'''
                         else: 
@@ -463,7 +471,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_traco_unico_1});'''
                             else: # 3 HIDEN 1 KKG E 3 TRAÇO
@@ -475,7 +483,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_, id_traco_unico_1, id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
@@ -490,7 +498,7 @@ def commit_pp():
             registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                         else:
@@ -516,7 +524,7 @@ def commit_pp():
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
@@ -540,9 +548,9 @@ está correto? 1 para "sim" 0 para "não". '''))
             print('O valor não corresponde. Tente novamente')
     return sql
 
-# atualizar as bases  MUDAAAAAAAAAAR
+# atualizar as bases
 def atualizacao_base(nome, limite):
-    base_lista = str(pd.read_sql_query('SELECT base FROM pp_info;', con=engine))
+    base_lista = str(pd.read_sql_query('SELECT base FROM pp;', con=engine))
     conta = base_lista.count(nome)
     if conta > limite:
         print('Base lotada.')
@@ -552,9 +560,9 @@ def atualizacao_base(nome, limite):
         base = f'{nome} ({conta}/{limite})'
     return base
 
-# atualizar os clãs  MUDAAAAAAAAAAR
+# atualizar os clãs
 def atualizacao_cla(nome, limite):
-    cla_lista = str(pd.read_sql_query('SELECT cla_1, cla_2 FROM pp_info;', con=engine))
+    cla_lista = str(pd.read_sql_query('SELECT cla_1, cla_2 FROM pp;', con=engine))
     conta = cla_lista.count(nome)
     if conta > limite:
         print('Base lotada.')
@@ -563,7 +571,7 @@ def atualizacao_cla(nome, limite):
         cla = f'{nome} ({conta}/{limite})'
     return cla
 
-#imput sobre query  MUDAAAAAAAAAAR
+#imput sobre query
 def query(): 
     analise_operacao = False 
     while analise_operacao == False:
@@ -578,6 +586,7 @@ SELECT;
         Digite 41 para mostrar os nomes ocupados;'
         Digite 42 para mostrar as bases atualizadas;
         Digite 43 para mostras os clãs atualizados;
+        Digite 44 para mostrar os registros ninja atualizados;
 
 INSERT;
     Digite 6 para fazer um 'INSERTO INTO arma;'
@@ -587,19 +596,16 @@ INSERT;
 '''))
             if query == 1:
                 analise_operacao = True
-                SELECT('SELECT * FROM arma_info;')
+                SELECT('SELECT * FROM arma;')
             elif query == 2:
                 analise_operacao = True
-                SELECT('SELECT * FROM invo_info;')
+                SELECT('SELECT * FROM invo;')
             elif query == 3:
                 analise_operacao = True
-                SELECT('SELECT * FROM player_info;')
+                SELECT('SELECT * FROM player;')
             elif query == 4:
                 analise_operacao = True
-                SELECT('SELECT * FROM pp_info;')
-            elif query == 5:
-                analise_operacao = True
-                SELECT('SELECT * FROM clas_info ORDER BY id_clas ASC')
+                SELECT('SELECT * FROM pp;')
             if query == 6:
                 analise_operacao = True
                 commit_arma()
@@ -614,10 +620,10 @@ INSERT;
                 commit_pp()
             elif query == 40: # select aparencia
                 analise_operacao = True
-                SELECT('SELECT aparencia as aparências_em_uso FROM pp_info ORDER BY aparencia ASC;')
+                SELECT('SELECT aparencia as aparências_em_uso FROM pp ORDER BY aparencia ASC;')
             elif query == 41: # select nome
                 analise_operacao = True
-                SELECT('SELECT personagem as nomes_de_personagem_em_uso FROM pp_info ORDER BY personagem ASC;')
+                SELECT('SELECT nome as nomes_de_personagem_em_uso FROM pp ORDER BY nome ASC;')
             elif query == 42: # select base
                 analise_operacao = True
                 sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -🚻』
@@ -670,12 +676,23 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Shinno', 1)}
 『❌』> {atualizacao_base('Shion', 3)}
 『❌』> {atualizacao_base('Shisui', 1)}
+『❌』> {atualizacao_base('Shojoji', 3)}
 『❌』> {atualizacao_base('Tobirama', 1)}
 『❌』> {atualizacao_base('Tsunade', 2)}
 『❌』> {atualizacao_base('Yakumo', 2)}
 '''
                 print(sistema_base)
-                query_adicional()
+                try:
+                    copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+                    if copiar == 1:
+                        pyperclip.copy(sistema_base)
+                        print('''
+Copiado com sucesso!
+''')
+                    else:
+                        query_adicional()
+                except ValueError:
+                    query_adicional()
             elif query == 43: # select clã
                 analise_operacao = True
                 sistema_cla = """『🍃- °  Clãs, Familia, Grupos  ° -🍃』
@@ -1075,7 +1092,32 @@ Incapacitado de utilizar ninjutsu ou genjutsu
 ● ━━━━━━━ '''.format(atualizacao_cla('Jashinista', 5), atualizacao_cla('Samurai', 5), atualizacao_cla('Nokizaru', 5))
                 sistema_cla_all = sistema_cla + sistema_familia + sistema_grupo
                 print(sistema_cla_all)
-                query_adicional()
+                try:
+                    copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+                    if copiar == 1:
+                        pyperclip.copy(sistema_cla_all)
+                        print('''
+Copiado com sucesso!
+''')
+                    else:
+                        query_adicional()
+                except ValueError:
+                    query_adicional()
+
+            elif query == 44: # registro ninja select
+                analise_operacao = True
+                registro_ninja = str(SELECT('select registro_ninja as registro_ninjas_ocupados from pp order by registro_ninja asc'))
+                try:
+                    copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+                    if copiar == 1:
+                        pyperclip.copy(registro_ninja)
+                        print('''
+Copiado com sucesso!
+''')
+                    else:
+                        query_adicional()
+                except ValueError:
+                    query_adicional()  
             else:
                 print('O valor não corresponde. Tente novamente')
                 analise_operacao = False             
