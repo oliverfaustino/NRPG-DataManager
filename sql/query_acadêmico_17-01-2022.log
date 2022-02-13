@@ -1,0 +1,560 @@
+-- Executing query:
+select id_player, numero, personagem_1, id_personagem, patente, from player_info, pp_info;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...er, numero, personagem_1, id_personagem, patente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 65
+
+-- Executing query:
+select id_player, numero, personagem_1, id_personagem, patente, from player_info, pp_info where personagem_1 = id_personagem;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...er, numero, personagem_1, id_personagem, patente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 65
+
+-- Executing query:
+select player_info.id_player, player_info.numero, player_info.personagem_1, pp_info.id_personagem, ppp_info.atente, from player_info, pp_info where personagem_1 = id_personagem;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...onagem_1, pp_info.id_personagem, ppp_info.atente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 117
+
+-- Executing query:
+select player_info.id_player, player_info.numero, player_info.personagem_1, pp_info.id_personagem, pp_info.atente, from player_info, pp_info where personagem_1 = id_personagem;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...sonagem_1, pp_info.id_personagem, pp_info.atente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 116
+
+-- Executing query:
+select player_info.id_player, player_info.numero, player_info.personagem_1, pp_info.id_personagem, pp_info.atente, from player_info, pp_info;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...sonagem_1, pp_info.id_personagem, pp_info.atente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 116
+
+-- Executing query:
+select player_info.id_player, player_info.numero, player_info.personagem_1, pp_info.id_personagem, pp_info.atente, from player_info, pp_info;
+ERRO:  erro de sintaxe em ou próximo a "from"
+LINE 1: ...sonagem_1, pp_info.id_personagem, pp_info.atente, from playe...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "from"
+SQL state: 42601
+Character: 116
+
+-- Executing query:
+select * from player_info, pp_info;
+Total query runtime: 151 ms.
+1156 rows retrieved.
+
+-- Executing query:
+select * from player_info, pp_info;
+Total query runtime: 155 ms.
+1156 rows retrieved.
+
+-- Executing query:
+select * from player_info;
+Total query runtime: 14 ms.
+34 rows retrieved.
+
+-- Executing query:
+select * from pp_info, player_info;
+Total query runtime: 152 ms.
+1156 rows retrieved.
+
+-- Executing query:
+select * from pp_info, player_info order by id_player;
+Total query runtime: 155 ms.
+1156 rows retrieved.
+
+-- Executing query:
+select *;
+ERRO:  SELECT * sem tabelas especificadas não é válido
+LINE 1: select *;
+               ^
+********** Error **********
+
+ERRO: SELECT * sem tabelas especificadas não é válido
+SQL state: 42601
+Character: 8
+
+-- Executing query:
+select * from *;
+ERRO:  erro de sintaxe em ou próximo a "*"
+LINE 1: select * from *;
+                      ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "*"
+SQL state: 42601
+Character: 15
+
+-- Executing query:
+select * from;
+ERRO:  erro de sintaxe em ou próximo a ";"
+LINE 1: select * from;
+                     ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ";"
+SQL state: 42601
+Character: 14
+
+-- Executing query:
+select id_player as player, numero from;
+ERRO:  erro de sintaxe em ou próximo a ";"
+LINE 1: select id_player as player, numero from;
+                                               ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ";"
+SQL state: 42601
+Character: 40
+
+-- Executing query:
+select id_player as player, numero from player_info;
+Total query runtime: 11 ms.
+34 rows retrieved.
+
+-- Executing query:
+select id_player as player, numero from player_info
+
+union
+
+select id_pp as pp, patente, afiliacao from pp_info
+;
+ERRO:  coluna "id_pp" não existe
+LINE 5: select id_pp as pp, patente, afiliacao from pp_info
+               ^
+********** Error **********
+
+ERRO: coluna "id_pp" não existe
+SQL state: 42703
+Character: 68
+
+-- Executing query:
+select id_player as player, numero from player_info
+
+union
+
+select id_personagem as personagem, patente, afiliacao from pp_info
+;
+ERRO:  cada consulta UNION deve ter o mesmo número de colunas
+LINE 5: select id_personagem as personagem, patente, afiliacao from ...
+               ^
+********** Error **********
+
+ERRO: cada consulta UNION deve ter o mesmo número de colunas
+SQL state: 42601
+Character: 68
+
+-- Executing query:
+select id_player as player, numero from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info
+;
+ERRO:  tipos no UNION bigint e character varying não podem corresponder
+LINE 5: select id_personagem as personagem, patente from pp_info
+                                            ^
+********** Error **********
+
+ERRO: tipos no UNION bigint e character varying não podem corresponder
+SQL state: 42804
+Character: 97
+
+-- Executing query:
+select id_player as player from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+ERRO:  cada consulta UNION deve ter o mesmo número de colunas
+LINE 5: select id_personagem as personagem, patente from pp_info;
+               ^
+********** Error **********
+
+ERRO: cada consulta UNION deve ter o mesmo número de colunas
+SQL state: 42601
+Character: 60
+
+-- Executing query:
+select id_player as player, personage_1 from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+ERRO:  coluna "personage_1" não existe
+LINE 1: select id_player as player, personage_1 from player_info
+                                    ^
+********** Error **********
+
+ERRO: coluna "personage_1" não existe
+SQL state: 42703
+Character: 29
+
+-- Executing query:
+select id_player as player, personagem_1 from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+Total query runtime: 11 ms.
+68 rows retrieved.
+
+-- Executing query:
+select id_player as player, personagem_1 from player_info
+
+join
+
+select id_personagem as personagem, patente from pp_info;
+ERRO:  erro de sintaxe em ou próximo a "select"
+LINE 5: select id_personagem as personagem, patente from pp_info;
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "select"
+SQL state: 42601
+Character: 66
+
+-- Executing query:
+select id_player as player, personagem_1 from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+Total query runtime: 11 ms.
+68 rows retrieved.
+
+-- Executing query:
+select id_player as player, personagem_1 as pp from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+Total query runtime: 12 ms.
+68 rows retrieved.
+
+-- Executing query:
+select personagem_1 as pp, id_player as player from player_info
+
+union
+
+select id_personagem as personagem, patente from pp_info;
+Total query runtime: 12 ms.
+68 rows retrieved.
+
+-- Executing query:
+select id_player, numero from player_info
+Total query runtime: 13 ms.
+34 rows retrieved.
+
+-- Executing query:
+select id_player, numero, personagem_1 from player_info
+
+select patente from pp_info
+ERRO:  erro de sintaxe em ou próximo a "select"
+LINE 3: select patente from pp_info
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "select"
+SQL state: 42601
+Character: 58
+
+-- Executing query:
+select id_player, numero, personagem_1 from player_info
+
+union
+
+select patente from pp_info
+ERRO:  cada consulta UNION deve ter o mesmo número de colunas
+LINE 5: select patente from pp_info
+               ^
+********** Error **********
+
+ERRO: cada consulta UNION deve ter o mesmo número de colunas
+SQL state: 42601
+Character: 72
+
+-- Executing query:
+select personagem_1 from player_info
+
+union
+
+select patente from pp_info
+Total query runtime: 11 ms.
+37 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1 from player_info where personagem_1 = id_personagem
+
+
+
+
+ERRO:  coluna "id_personagem" não existe
+LINE 1: ...ersonagem_1 from player_info where personagem_1 = id_persona...
+                                                             ^
+********** Error **********
+
+ERRO: coluna "id_personagem" não existe
+SQL state: 42703
+Character: 78
+
+-- Executing query:
+select id_player, numero ,personagem_1 from player_info, pp_info where personagem_1 = id_personagem
+
+
+
+
+Total query runtime: 11 ms.
+33 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info;
+
+
+
+
+Total query runtime: 43 ms.
+1156 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where personagem_1 = id_personagem;
+
+
+
+
+Total query runtime: 12 ms.
+33 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where personagem_1 = id_personagem order by personagem_1;
+
+
+
+
+Total query runtime: 13 ms.
+33 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 order by personagem_1;
+
+
+
+
+Total query runtime: 12 ms.
+33 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 order by personagem_1;
+
+
+
+
+Total query runtime: 12 ms.
+34 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 and where patente = order by personagem_1 ;
+
+
+
+
+ERRO:  erro de sintaxe em ou próximo a "where"
+LINE 1: ...o, pp_info where id_personagem = personagem_1 and where pate...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "where"
+SQL state: 42601
+Character: 114
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 and where patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+ERRO:  erro de sintaxe em ou próximo a "where"
+LINE 1: ...o, pp_info where id_personagem = personagem_1 and where pate...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "where"
+SQL state: 42601
+Character: 114
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 where patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+ERRO:  erro de sintaxe em ou próximo a "where"
+LINE 1: ..._info, pp_info where id_personagem = personagem_1 where pate...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "where"
+SQL state: 42601
+Character: 110
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info
+where patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+Total query runtime: 21 ms.
+408 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1, patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+ERRO:  erro de sintaxe em ou próximo a ","
+LINE 1: ...r_info, pp_info where id_personagem = personagem_1, patente ...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ","
+SQL state: 42601
+Character: 109
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 // patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+ERRO:  operador não existe: character varying // character varying
+LINE 1: ..._info, pp_info where id_personagem = personagem_1 // patente...
+                                                             ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+
+********** Error **********
+
+ERRO: operador não existe: character varying // character varying
+SQL state: 42883
+Hint: Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+Character: 110
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info where id_personagem = personagem_1 and patente = 'Acadêmico' order by personagem_1 ;
+
+
+
+
+Total query runtime: 11 ms.
+12 rows retrieved.
+
+-- Executing query:
+select id_player as Player, numero as Número Do Player,personagem_1 as Personagem, patente as Patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+
+
+
+
+ERRO:  erro de sintaxe em ou próximo a "Do"
+LINE 1: select id_player as Player, numero as Número Do Player,perso...
+                                                     ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "Do"
+SQL state: 42601
+Character: 46
+
+-- Executing query:
+select id_player as Player, numero as NúmeroPlayer,personagem_1 as Personagem, patente as Patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+
+
+
+
+Total query runtime: 11 ms.
+12 rows retrieved.
+
+-- Executing query:
+select id_player as Player, numero as Número,personagem_1 as Personagem, patente as Patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+
+
+
+
+Total query runtime: 12 ms.
+12 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+
+
+
+
+Total query runtime: 11 ms.
+12 rows retrieved.
+
+-- Executing query:
+EXPLAIN (ANALYZE off, VERBOSE off, COSTS on, BUFFERS off, TIMING off )select id_player, numero ,personagem_1, patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+query result with 8 rows will be returned.
+
+
+8 rows retrieved.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+Total query runtime: 12 ms.
+12 rows retrieved.
+
+-- Executing pgScript
+Total pgScript runtime: 191 ms.
+
+-- Executing query:
+select id_player, numero ,personagem_1, patente from player_info, pp_info 
+where id_personagem = personagem_1 
+and patente = 'Acadêmico' 
+order by personagem_1;
+Total query runtime: 11 ms.
+12 rows retrieved.
+

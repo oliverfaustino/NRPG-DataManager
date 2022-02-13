@@ -182,7 +182,7 @@ def commit_pp():
         data_criacao= str(input('Data de criação: '))
         id_hiden_1 = float(input('1° Hiden: '))
         if id_hiden_1 == 0: #SEM HIDEN
-            id_kkg_1 = int(input('1° Kekkei Genkai: '))
+            id_kkg_1 = float(input('1° Kekkei Genkai: '))
             if id_kkg_1 == 0: #SEM HIDEN E SEM KKG
                 id_traco_unico_1 = int(input('1° Traço Único: '))
                 if id_traco_unico_1 == 0: #Se um Traço único for = 0, as que vem depois obviamente não vão existir. Logo, serão excluídas
@@ -223,7 +223,7 @@ def commit_pp():
             {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
             '{data_criacao}', {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
             else:
-                id_kkg_2 = int(input('2° Kekkei Genkai: '))
+                id_kkg_2 = float(input('2° Kekkei Genkai: '))
                 if id_kkg_2 == 0:
                     id_traco_unico_1 = int(input('1° Traço Único: '))
                     if id_traco_unico_1 == 0: # 1 KKG
@@ -260,7 +260,7 @@ def commit_pp():
             '{data_criacao}', {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                
                 else:
-                    id_kkg_3 = int(input('3° Kekkei Genkai: '))
+                    id_kkg_3 = float(input('3° Kekkei Genkai: '))
                     id_traco_unico_1 = int(input('1° Traço Único: '))
                     if id_traco_unico_1 == 0: # 3 KKG
                         sql = f'''
@@ -298,7 +298,7 @@ def commit_pp():
         else:
             id_hiden_2 = float(input('2° Hiden: '))
             if id_hiden_2 == 0: #Se uma Hiden for = 0, as que vem depois obviamente não vão existir. Logo, serão excluídas
-                id_kkg_1 = int(input('1° Kekkei Genkai: '))
+                id_kkg_1 = float(input('1° Kekkei Genkai: '))
                 if id_kkg_1 == 0: #Se uma Kkg for = 0, as que vem depois obviamente não vão existir. Logo, serão excluídas
                     id_traco_unico_1 = int(input('1° Traço Único: '))
                     if id_traco_unico_1 == 0: # 1 HIDEN 0 KKG E 0 TRAÇO
@@ -334,7 +334,7 @@ def commit_pp():
             {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
             '{data_criacao}', {id_hiden_1}, {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
                 else:
-                    id_kkg_2 = int(input('2° Kekkei Genkai: '))
+                    id_kkg_2 = float(input('2° Kekkei Genkai: '))
                     if id_kkg_2 == 0:
                         id_traco_unico_1 = int(input('1° Traço Único: '))
                         if id_traco_unico_1 == 0: # 1 HIDEN 1 KKG E 0 TRAÇO
@@ -342,9 +342,7 @@ def commit_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
-            id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
-            id_traco_unico_2, id_traco_unico_3)
+            registro_ninja, data_criacao, id_hiden_1, id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
             {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1});'''
@@ -372,7 +370,7 @@ def commit_pp():
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                  
                     else:
-                        id_kkg_3 = int(input('3° Kekkei Genkai: '))
+                        id_kkg_3 = float(input('3° Kekkei Genkai: '))
                         id_traco_unico_1 = int(input('1° Traço Único: '))
                         if id_traco_unico_1 == 0: # 1 HIDEN 3 KKG E 0 TRAÇO
                             sql = f'''
@@ -410,7 +408,7 @@ def commit_pp():
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
             else:
                 id_hiden_3 = float(input('3° Hiden: '))
-                id_kkg_1 = int(input('1° Kekkei Genkai: ')) 
+                id_kkg_1 = float(input('1° Kekkei Genkai: ')) 
                 if id_kkg_1 == 0:
                     id_traco_unico_1 = int(input('1° Traço Único: '))
                     if id_traco_unico_1 ==0:  # 3 HIDEN
@@ -447,7 +445,7 @@ def commit_pp():
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''   
                 else:
-                    id_kkg_2 = int(input('2° Kekkei Genkai: '))
+                    id_kkg_2 = float(input('2° Kekkei Genkai: '))
                     if id_kkg_2 == 0:
                         id_traco_unico_1 = int(input('1° Traço Único: '))
                         if id_traco_unico_1 ==0: # 3 HIDEN 1 KKG E 0 TRAÇO
@@ -488,7 +486,7 @@ def commit_pp():
             {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
                     else:
-                        id_kkg_3 = int(input('3° Kekkei Genkai: '))
+                        id_kkg_3 = float(input('3° Kekkei Genkai: '))
                         id_traco_unico_1 = int(input('1° Traço Único: '))
                         if id_traco_unico_1 == 0: # 3 HIDEN 3 KKG E 0 TRAÇO
                             sql = f'''
@@ -538,8 +536,10 @@ está correto? 1 para "sim" 0 para "não". '''))
                 confirmacao = True
                 try:
                     pd.read_sql_query(sql, con=engine)
-                finally:
-                        query_adicional()
+                    query_adicional()
+                except:
+                    query_adicional()
+
             elif confirmacao_1 == 0:
                 confirmacao = False
             else:
@@ -663,6 +663,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Karin', 2)}
 『❌』> {atualizacao_base('Kashin Koji', 2)}
 『❌』> {atualizacao_base('Kakashi', 2)}
+『❌』> {atualizacao_base('Kidoumaru', 3)}
 『❌』> {atualizacao_base('Madara', 5)}
 『❌』> {atualizacao_base('Mei Terumi', 2)}
 『❌』> {atualizacao_base('Minato', 2)}
@@ -689,6 +690,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
                         print('''
 Copiado com sucesso!
 ''')
+                        query_adicional()
                     else:
                         query_adicional()
                 except ValueError:
@@ -1099,6 +1101,7 @@ Incapacitado de utilizar ninjutsu ou genjutsu
                         print('''
 Copiado com sucesso!
 ''')
+                        query_adicional()
                     else:
                         query_adicional()
                 except ValueError:
