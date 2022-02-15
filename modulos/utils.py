@@ -89,18 +89,20 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Boruto', 1)}
 『❌』> {atualizacao_base('Code', 1)}
 『❌』> {atualizacao_base('Deidara', 3)}
+『❌』> {atualizacao_base('Gaara', 3)}
 『❌』> {atualizacao_base('Haku', 3)}
 『❌』> {atualizacao_base('Hashirama', 1)}
+『❌』> {atualizacao_base('Hiruko', 1)}
 『❌』> {atualizacao_base('Itachi', 2)}
 『❌』> {atualizacao_base('Jigen', 1)}
 『❌』> {atualizacao_base('Jiraya', 3)}
 『❌』> {atualizacao_base('Juugo', 3)}
-『❌』> {atualizacao_base('Hiruko', 1)}
 『❌』> {atualizacao_base('Kabuto', 1)}
 『❌』> {atualizacao_base('Kahyo', 2)}
 『❌』> {atualizacao_base('Karin', 2)}
 『❌』> {atualizacao_base('Kashin Koji', 2)}
 『❌』> {atualizacao_base('Kakashi', 2)}
+『❌』> {atualizacao_base('Kawaki', 1)}
 『❌』> {atualizacao_base('Kidoumaru', 3)}
 『❌』> {atualizacao_base('Madara', 5)}
 『❌』> {atualizacao_base('Mei Terumi', 2)}
@@ -108,6 +110,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Neji', 5)}
 『❌』> {atualizacao_base('Obito', 1)}
 『❌』> {atualizacao_base('Orochimaru', 1)} 
+『❌』> {atualizacao_base('Ranmaru', 3)}
 『❌』> {atualizacao_base('Sakon', 3)}
 『❌』> {atualizacao_base('Sasori', 1)}
 『❌』> {atualizacao_base('Sasuke', 3)}
@@ -118,6 +121,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Shojoji', 3)}
 『❌』> {atualizacao_base('Tobirama', 1)}
 『❌』> {atualizacao_base('Tsunade', 2)}
+『❌』> {atualizacao_base('Utakata', 3)}
 『❌』> {atualizacao_base('Yakumo', 2)}
 '''
                 print(sistema_base)

@@ -1,8 +1,10 @@
+from tokenize import Ignore
 import pandas as pd
-#from sqlalchemy import create_engine
+from sqlalchemy import create_engine
 from modulos.select_engine import *
 
 #engine = create_engine('postgresql://postgres:160587pvcdacr4sh-pvCr4sh_PV@localhost:5432/nrpg_revolution')
+
 
 #
 def commit_arma():
@@ -72,15 +74,16 @@ está correto? 1 para "sim" 0 para "não". '''))
 def commit_player():
     confirmacao = False
     while confirmacao == False:
-        select('select id_player, nome from player order by id_player asc')
+        select_simples('select id_player, nome from player order by id_player asc')
         print('\nSobre o Player à ser registrado')
         id_player = int(input('Id: '))
         nome = str(input('Nome: '))
         numero = int(input('Número: ')) 
         recrutador = int(input('Recrutado por: '))
+        check_in = 0
         sql = f'''INSERT INTO player(
-            id_player, nome, numero, recrutador)
-    VALUES ({id_player}, '{nome}', {numero}, {recrutador});
+            id_player, nome, numero, recrutador, check_in)
+    VALUES ({id_player}, '{nome}', {numero}, {recrutador}, {check_in});
 '''
         try:
             confirmacao_1 = int(input(f'''Confirmação dos valores:
@@ -92,6 +95,7 @@ está correto? 1 para "sim" 0 para "não". '''))
                 confirmacao = True
                 try:
                     pd.read_sql_query(sql, con=engine)
+                    pass
                 finally:
                     pass
 
@@ -107,7 +111,7 @@ está correto? 1 para "sim" 0 para "não". '''))
 def commit_pp():
     confirmacao = False
     while confirmacao == False:
-        select('select id_player, nome from player order by id_player asc')
+        select_simples('select id_player, nome from player order by id_player asc')
         print('\nSobre o Personagem à ser registrado')
         id_pp = float(input('Id do personagem: '))
         id_player = int(input('Id do player dono do personagem: '))
@@ -147,13 +151,13 @@ def commit_pp():
 ''')) 
         registro_ninja = int(input('Registro ninja: '))
         data_criacao= str(input('Data de criação: '))
-        select('select id_hiden, nome from hiden order by id_hiden asc')
+        select_simples('select id_hiden, nome from hiden order by id_hiden asc')
         id_hiden_1 = float(input('1° Hiden: '))
         if id_hiden_1 == 0: #SEM HIDEN
-            select('select id_kkg, nome from kkg order by id_kkg asc')
+            select_simples('select id_kkg, nome from kkg order by id_kkg asc')
             id_kkg_1 = float(input('1° Kekkei Genkai: '))
             if id_kkg_1 == 0: #SEM HIDEN E SEM KKG
-                select('select id_traco_unico, nome from traco_unico order by id_traco_unico asc')
+                select_simples('select id_traco_unico, nome from traco_unico order by id_traco_unico asc')
                 id_traco_unico_1 = int(input('1° Traço Único: '))
                 if id_traco_unico_1 == 0: #Se um Traço único for = 0, as que vem depois obviamente não vão existir. Logo, serão excluídas
 
