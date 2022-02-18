@@ -1,12 +1,7 @@
 from tokenize import Ignore
 import pandas as pd
-from sqlalchemy import create_engine
 from modulos.select_engine import *
 
-#engine = create_engine('postgresql://postgres:160587pvcdacr4sh-pvCr4sh_PV@localhost:5432/nrpg_revolution')
-
-
-#
 def commit_arma():
     confirmacao = False
     while confirmacao == False:
@@ -58,9 +53,10 @@ está correto? 1 para "sim" 0 para "não". '''))
             if confirmacao_1 == 1:
                 confirmacao = True
                 try:
-                    df = pd.read_sql_query(sql, con=engine)
+                    pd.read_sql_query(sql, con=engine)
+                    break
                 finally:
-                    pass
+                    break
 
             elif confirmacao_1 == 0:
                  confirmacao = False

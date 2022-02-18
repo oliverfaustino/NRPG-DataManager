@@ -1,0 +1,7 @@
+conecao.py
+
+__pycache__/
+
+modulos/__pycache__/
+
+NRPG-DataManager/modulos/__pycache__/

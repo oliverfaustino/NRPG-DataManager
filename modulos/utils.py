@@ -1,5 +1,4 @@
 from datetime import datetime
-import pandas as pd
 import pyperclip
 
 from modulos.select_engine import *
@@ -88,6 +87,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Amado', 1)}
 『❌』> {atualizacao_base('Boruto', 1)}
 『❌』> {atualizacao_base('Code', 1)}
+『❌』> {atualizacao_base('Darui', 3)}
 『❌』> {atualizacao_base('Deidara', 3)}
 『❌』> {atualizacao_base('Gaara', 3)}
 『❌』> {atualizacao_base('Haku', 3)}
@@ -116,7 +116,6 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Sasuke', 3)}
 『❌』> {atualizacao_base('Shin Uchiha', 1)}
 『❌』> {atualizacao_base('Shinno', 1)}
-『❌』> {atualizacao_base('Shion', 3)}
 『❌』> {atualizacao_base('Shisui', 1)}
 『❌』> {atualizacao_base('Shojoji', 3)}
 『❌』> {atualizacao_base('Tobirama', 1)}
@@ -506,7 +505,15 @@ Incapacitado de utilizar ninjutsu ou genjutsu
  Tem: Dotes em Doton
  Tem: Dotes em Suiton
  Tem: Auto-Controle
-● ━━━━━━━'''.format(atualizacao_cla('Yome', 10), atualizacao_cla('Namikaze', 10), atualizacao_cla('Ranmaru', 10), atualizacao_cla('Guren', 10), atualizacao_cla('Karatachi', 10), atualizacao_cla('Otenki', 10), atualizacao_cla('Sakon e Ukon', 10), atualizacao_cla('Kumotami', 10), atualizacao_cla('Pakura', 10), atualizacao_cla('Bakurei', 10), atualizacao_cla('Haruno', 10), atualizacao_cla('Hatake', 10), atualizacao_cla('Maito', 5), atualizacao_cla('Lee', 5), atualizacao_cla('Terumi', 10), atualizacao_cla('Shion', 5), atualizacao_cla('Rinji', 10), atualizacao_cla('Ameyuki', 10))
+● ━━━━━━━
+→: {}
+ 
+ Tem: Arte Ninja: Capa de Gato
+ Tem: Manejo com Chakra
+ Tem: Agilidade Apurada
+ Tem: Velocidade Apurada
+ Tem: Dotes em Suiton
+● ━━━━━━━'''.format(atualizacao_cla('Yome', 10), atualizacao_cla('Namikaze', 10), atualizacao_cla('Ranmaru', 10), atualizacao_cla('Guren', 10), atualizacao_cla('Karatachi', 10), atualizacao_cla('Otenki', 10), atualizacao_cla('Sakon e Ukon', 10), atualizacao_cla('Kumotami', 10), atualizacao_cla('Pakura', 10), atualizacao_cla('Bakurei', 10), atualizacao_cla('Haruno', 10), atualizacao_cla('Hatake', 10), atualizacao_cla('Maito', 5), atualizacao_cla('Lee', 5), atualizacao_cla('Terumi', 10), atualizacao_cla('Shion', 5), atualizacao_cla('Rinji', 10), atualizacao_cla('Ameyuki', 10), atualizacao_cla('Izuno', 10))
                 sistema_grupo = '''● ━━━━━━━ 
 『🍃- °   Grupos  ° -🍃』
 

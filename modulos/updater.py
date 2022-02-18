@@ -1,10 +1,10 @@
 import pandas as pd
-from sqlalchemy import create_engine
-
-engine = create_engine('postgresql://postgres:160587pvcdacr4sh-pvCr4sh_PV@localhost:5432/nrpg_revolution')
+from modulos.conecao import *
 
 
-
+# atualizar os invo
+def atualizacao_invo(nome):
+    invo_lista= str(pd.read_sql_query('select id_player_1, id_player_2'))
 # atualizar os clãs
 def atualizacao_cla(nome, limite):
     cla_lista = str(pd.read_sql_query('SELECT cla_1, cla_2 FROM pp;', con=engine))
