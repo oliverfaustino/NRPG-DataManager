@@ -5,3 +5,4 @@ __pycache__/
 modulos/__pycache__/
 
 NRPG-DataManager/modulos/__pycache__/
+*.pyc
