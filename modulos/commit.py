@@ -1,6 +1,8 @@
 from tokenize import Ignore
 import pandas as pd
-from modulos.select_engine import *
+from sqlalchemy import except_all
+from modulos.select import *
+from modulos.conecao import *
 
 def commit_arma():
     confirmacao = False
@@ -92,7 +94,7 @@ está correto? 1 para "sim" 0 para "não". '''))
                 try:
                     pd.read_sql_query(sql, con=engine)
                     pass
-                finally:
+                except:
                     pass
 
             elif confirmacao_1 == 0:

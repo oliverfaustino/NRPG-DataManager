@@ -1,8 +1,6 @@
 import pandas as pd
-from sqlalchemy import create_engine
+from modulos.conecao import *
 import pyperclip
-
-engine = create_engine('postgresql://postgres:160587pvcdacr4sh-pvCr4sh_PV@localhost:5432/nrpg_revolution')
 
 def select(sql):
     try:

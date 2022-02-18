@@ -1,7 +1,7 @@
 from datetime import datetime
 import pyperclip
 
-from modulos.select_engine import *
+from modulos.select import *
 from modulos.commit import *
 from modulos.updater import *
 
