@@ -1,10 +1,11 @@
 from datetime import datetime
+import sys
 import pyperclip
-
+from modulos.cores import *
 from modulos.select import *
 from modulos.commit import *
 from modulos.updater import *
-
+import os
 
 tempo = datetime.now()
 
@@ -13,25 +14,29 @@ def query():
     analise_operacao = False 
     while analise_operacao == False:
         try:
-            query = int(input('''\nQuais operações deseja fazer? 
-select;
-    Digite 1 para fazer um 'select * FROM arma;' 
-    Digite 2 para fazer um 'select * FROM invo;' 
-    Digite 3 para fazer um 'select * FROM player;'
-    Digite 4 para fazer um 'select * FROM pp;'
-        Digite 40 para mostrar as aparências ocupadas;'
-        Digite 41 para mostrar os nomes ocupados;'
-        Digite 42 para mostrar as bases atualizadas;
-        Digite 43 para mostras os clãs atualizados;
-        Digite 44 para mostrar os registros ninja atualizados;
+            query = int(input(f'''\nQuais operações deseja fazer? 
+Atualizações;
+    Digite \033[33m1 para mostrar os Nomes ocupados;
+    Digite 2 para mostrar as Aparências ocupadas;
+    Digite 3 para mostrar os Registros ninja ocupados;       
+    Digite 4 para mostrar as Bases ocupadas;
+    Digite 5 para mostrar os Clãs ocupados;
 
-INSERT;
+    Digite 6 para mostrar as Invocações ocupadas;
+    Digite 7 para mostrar as Armas ocupadas;
+
+
+Adições;
     Digite 6 para fazer um 'INSERTO INTO arma;'
     Digite 7 para fazer um 'INSERT INTO invo;'
     Digite 8 para adicionar um novo player;'
     Digite 9 para adicionar um novo personagem;'
+
+    Digite 0 para encerrar o programa.
 '''))
-            if query == 1:
+            if query == 0:
+                sys.exit('\nConexão encerrada!')
+            elif query == 1:
                 analise_operacao = True
                 select('select * FROM arma;')
             elif query == 2:
