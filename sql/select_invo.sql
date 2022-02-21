@@ -1,6 +1,6 @@
 ﻿select pp.nome from pp, invo 
 
-	where invo.nome = ?
+	where invo.id_invo = ?
 
 	pp.id_pp = invo.id_pp_1 
 
