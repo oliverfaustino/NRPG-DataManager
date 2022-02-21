@@ -3,10 +3,11 @@ from modulos.conecao import *
 
 
 # atualizar os invo
-def atualizacao_invo(nome):
-    invo_lista= str(pd.read_sql_query('select pp.nome from pp, invo where pp.id_pp = invo.id_pp_1 or pp.id_pp = invo.id_pp_2'))
-    invo= f'{nome}: {invo_lista}'
-    
+def atualizacao_invo(nome, id):
+    invo_lista= str(pd.read_sql_query(f'select pp.nome from pp, invo where invo.id_invo = {id} and pp.id_pp = invo.id_pp_1 or pp.id_pp = invo.id_pp_2', con=engine))
+    invo = f'{nome}: {invo_lista}'
+    return invo
+
 # atualizar os clãs
 def atualizacao_cla(nome, limite):
     cla_lista = str(pd.read_sql_query('SELECT cla_1, cla_2 FROM pp;', con=engine))
