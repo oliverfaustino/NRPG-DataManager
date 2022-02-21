@@ -5,6 +5,7 @@ from modulos.cores import *
 from modulos.select import *
 from modulos.commit import *
 from modulos.updater import *
+
 import os
 
 tempo = datetime.now()
@@ -50,7 +51,10 @@ Adições;
                 select('select * FROM pp;')
             if query == 6:
                 analise_operacao = True
-                commit_arma()
+                sistema_invo= f'''Invo 
+『❌』> {atualizacao_invo(nome= 'Gamakichi', id= 1)}
+『❌』> {atualizacao_invo(nome= 'Gamahiro', id= 2)}
+『❌』> {atualizacao_invo(nome= 'Gamabunta', id= 3)}'''
             elif query == 7:
                 analise_operacao = True
                 commit_invo()
