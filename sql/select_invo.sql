@@ -1,9 +1,7 @@
 ﻿select pp.nome from pp, invo 
 
-	where invo.id_invo = ?
+	where invo.id_invo = 1
+		(select )
 
-	pp.id_pp = invo.id_pp_1 
+	or pp.id_pp = invo.id_pp_2
 
-	or 
-
-	pp.id_pp = invo.id_pp_2
