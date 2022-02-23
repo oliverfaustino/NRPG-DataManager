@@ -15,58 +15,46 @@ def query():
     while analise_operacao == False:
         try:
             query = int(input(f'''\nQuais operações deseja fazer? 
-Atualizações;
-    Digite \033[33m1 para mostrar os Nomes ocupados;
-    Digite 2 para mostrar as Aparências ocupadas;
-    Digite 3 para mostrar os Registros ninja ocupados;       
-    Digite 4 para mostrar as Bases ocupadas;
-    Digite 5 para mostrar os Clãs ocupados;
 
-    Digite 6 para mostrar as Invocações ocupadas;
-    Digite 7 para mostrar as Armas ocupadas;
-
-
-Adições;
-    Digite 6 para fazer um 'INSERTO INTO arma;'
-    Digite 7 para fazer um 'INSERT INTO invo;'
-    Digite 8 para adicionar um novo player;'
-    Digite 9 para adicionar um novo personagem;'
-
+----- ----- >> Sistema << ------ -----
+    
     Digite 0 para encerrar o programa.
+
+---- ---- >> Atualizações << ---- ----
+    Personagem:
+        Digite 1 para mostrar os Nomes ocupados;
+        Digite 2 para mostrar as Aparências ocupadas;
+        Digite 3 para mostrar os Registros ninja ocupados;       
+        Digite 4 para mostrar as Bases ocupadas;
+        Digite 5 para mostrar os Clãs ocupados;
+        Digite 6 para mostrar a Ficha de Criação.
+
+    Itens/NPC:
+        Digite 7 para mostrar as Invocações ocupadas * em desenvolvimento * ;
+        Digite 8 para mostrar as Armas ocupadas * em desenvolvimento * .
+
+----- ------ >> Adições << ------ -----
+    Digite 8 para fazer um INSERTO INTO arma * em desenvolvimento * ;
+    Digite 9 para fazer um INSERT INTO invo * em desenvolvimento * ;
+    Digite 10 para adicionar um novo player;
+    Digite 11 para adicionar um novo personagem.
 '''))
             if query == 0:
                 sys.exit('\nConexão encerrada!')
+
             elif query == 1:
                 analise_operacao = True
-                select('select * FROM arma;')
+                select('select nome as nomes_de_personagem_em_uso FROM pp ORDER BY nome ASC;')
+
             elif query == 2:
                 analise_operacao = True
-                select('select * FROM invo;')
+                select('select aparencia as aparências_em_uso FROM pp ORDER BY aparencia ASC;')
+
             elif query == 3:
                 analise_operacao = True
-                select('select * FROM player;')
-            elif query == 4:
-                analise_operacao = True
-                select('select * FROM pp;')
-            if query == 6:
-                analise_operacao = True
-                commit_arma()
-            elif query == 7:
-                analise_operacao = True
-                commit_invo()
-            elif query == 8:
-                analise_operacao = True
-                commit_player()
-            elif query == 9:
-                analise_operacao = True
-                commit_pp()
-            elif query == 40: # select aparencia
-                analise_operacao = True
-                select('select aparencia as aparências_em_uso FROM pp ORDER BY aparencia ASC;')
-            elif query == 41: # select nome
-                analise_operacao = True
-                select('select nome as nomes_de_personagem_em_uso FROM pp ORDER BY nome ASC;')
-            elif query == 42: # select base
+                select('select registro_ninja as registro_ninjas_ocupados from pp order by registro_ninja asc')
+
+            elif query == 4: # select base
                 analise_operacao = True
                 sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -🚻』
 
@@ -140,8 +128,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
         
                 except ValueError:
                     pass
-    
-            elif query == 43: # select clã
+            elif query == 5: # select clã
                 analise_operacao = True
                 sistema_cla = """『🍃- °  Clãs, Familia, Grupos  ° -🍃』
 
@@ -561,23 +548,49 @@ Copiado com sucesso!
         
                 except ValueError:
                     print("")
-    
-
-            elif query == 44: # registro ninja select
+            if query == 6:
                 analise_operacao = True
-                registro_ninja = str(select('select registro_ninja as registro_ninjas_ocupados from pp order by registro_ninja asc'))
+                sistema_ficha = print('''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m̶ { ° -🗃️』
+   
+       →: Identificação de Player
+ ╘ N̶o̶m̶e̶ o̶u̶ N̶i̶c̶k̶ ↝: 
+ ╘ N̶ú̶m̶e̶r̶o̶ T̶e̶l̶e̶f̶o̶n̶e̶ ↝: 
+ ╘ R̶e̶c̶r̶u̶t̶a̶d̶o̶ P̶o̶r̶.̶.̶.̶ ↝:
+
+       →: Identificação De Personagem
+ ╘ N̶o̶m̶e̶ ↝: 
+ ╘ A̶p̶a̶r̶ê̶n̶c̶i̶a̶ ↝:
+ ╘ I̶d̶a̶d̶e̶ (̶A̶t̶é̶ 1̶3̶)̶ ↝:  
+ ╘ S̶e̶x̶o̶ ↝: 
+ ╘ T̶i̶p̶o̶ S̶a̶n̶g̶u̶í̶n̶e̶o̶ ↝: use o comando /rollsangue 
+
+       →: Dados 
+ ╘ B̶a̶s̶e̶ (̶1̶)̶ ↝:
+ ╘ C̶l̶ã̶ (̶A̶t̶é̶ 2)̶ ↝: 
+ ╘ E̶l̶e̶m̶e̶n̶t̶o̶ I̶n̶i̶c̶i̶a̶s̶(̶1̶)̶ ↝:
+ ╘ ̶S̶h̶i̶n̶o̶b̶i / ̶N̶u̶k̶k̶e̶n̶i̶n / A̶n̶d̶a̶r̶i̶l̶h̶o̶ ↝: 
+ ╘ ̶R̶e̶g̶i̶s̶t̶r̶o̶ N̶i̶n̶j̶a̶ ↝:
+ ╘ D̶a̶t̶a̶ d̶e̶ C̶r̶i̶a̶ç̶ã̶o̶ ↝:''')
                 try:
                     copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
                     if copiar == 1:
-                        pyperclip.copy(registro_ninja)
-                        print('''
-Copiado com sucesso!
-''')
+                        pyperclip.copy(sistema_ficha)
+                        print('\nCopiado com sucesso!')
+        
                     else:
-                        print("")
+                        pass
         
                 except ValueError:
-                    print("")
+                    pass
+            elif query == 7:
+                analise_operacao = True
+                commit_invo()
+            elif query == 8:
+                analise_operacao = True
+                commit_player()
+            elif query == 9:
+                analise_operacao = True
+                commit_pp()
       
             else:
                 print('O valor não corresponde. Tente novamente')
@@ -586,24 +599,3 @@ Copiado com sucesso!
             print('O valor não corresponde. Tente novamente')
             analise_operacao = False  
     return analise_operacao
-
-"""#Query
-def select(sql):
-    try:
-        df = str(pd.read_sql_query(sql, con=engine))
-        print(df)
-        try:
-            copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
-            if copiar == 1:
-                pyperclip.copy(df)
-                print('''
-Copiado com sucesso!
-''')
-            else:
-                pass
-
-        except ValueError:
-            pass
-    finally:
-        pass
-    return df"""
