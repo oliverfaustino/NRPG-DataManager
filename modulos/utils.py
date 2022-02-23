@@ -45,11 +45,11 @@ def query():
 
             elif query == 2: # Digite 2 para mostrar as Aparências ocupadas;
                 analise_operacao = True
-                select('select aparencia as aparências_em_uso FROM pp ORDER BY aparencia ASC;')
+                select('select aparencia FROM pp ORDER BY aparencia ASC;')
 
             elif query == 3: # Digite 3 para mostrar os Registros ninja ocupados; 
                 analise_operacao = True
-                select('select registro_ninja as registro_ninjas_ocupados from pp order by registro_ninja asc')
+                select('select registro_ninja from pp order by registro_ninja asc')
 
             elif query == 4: # Digite 4 para mostrar as Bases ocupadas;
                 analise_operacao = True
@@ -94,6 +94,8 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Kakashi', 2)}
 『❌』> {atualizacao_base('Kawaki', 1)}
 『❌』> {atualizacao_base('Kidoumaru', 3)}
+『❌』> {atualizacao_base('Kisame', 3)}
+『❌』> {atualizacao_base('Konan', 3)}
 『❌』> {atualizacao_base('Madara', 5)}
 『❌』> {atualizacao_base('Mei Terumi', 2)}
 『❌』> {atualizacao_base('Minato', 2)}
@@ -108,6 +110,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 『❌』> {atualizacao_base('Shinno', 1)}
 『❌』> {atualizacao_base('Shisui', 1)}
 『❌』> {atualizacao_base('Shojoji', 3)}
+『❌』> {atualizacao_base('Suigetsu', 5)}
 『❌』> {atualizacao_base('Tobirama', 1)}
 『❌』> {atualizacao_base('Tsunade', 2)}
 『❌』> {atualizacao_base('Utakata', 3)}
