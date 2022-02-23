@@ -5,7 +5,6 @@ from modulos.cores import *
 from modulos.select import *
 from modulos.commit import *
 from modulos.updater import *
-import os
 
 tempo = datetime.now()
 
@@ -14,9 +13,7 @@ def query():
     analise_operacao = False 
     while analise_operacao == False:
         try:
-            query = int(input(f'''\nQuais operações deseja fazer? 
-
------ ----- >> Sistema << ------ -----
+            query = int(input(f'''\n----- ----- >> Sistema << ------ -----
     
     Digite 0 para encerrar o programa.
 
@@ -39,22 +36,22 @@ def query():
     Digite 10 para adicionar um novo player;
     Digite 11 para adicionar um novo personagem.
 '''))
-            if query == 0:
+            if query == 0: # Digite 0 para encerrar o programa.
                 sys.exit('\nConexão encerrada!')
 
-            elif query == 1:
+            elif query == 1: # Digite 1 para mostrar os Nomes ocupados;
                 analise_operacao = True
-                select('select nome as nomes_de_personagem_em_uso FROM pp ORDER BY nome ASC;')
+                select('select nome FROM pp ORDER BY nome ASC;')
 
-            elif query == 2:
+            elif query == 2: # Digite 2 para mostrar as Aparências ocupadas;
                 analise_operacao = True
                 select('select aparencia as aparências_em_uso FROM pp ORDER BY aparencia ASC;')
 
-            elif query == 3:
+            elif query == 3: # Digite 3 para mostrar os Registros ninja ocupados; 
                 analise_operacao = True
                 select('select registro_ninja as registro_ninjas_ocupados from pp order by registro_ninja asc')
 
-            elif query == 4: # select base
+            elif query == 4: # Digite 4 para mostrar as Bases ocupadas;
                 analise_operacao = True
                 sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -🚻』
 
@@ -119,6 +116,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
                 print(sistema_base)
                 try:
                     copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+                    
                     if copiar == 1:
                         pyperclip.copy(sistema_base)
                         print('\nCopiado com sucesso!')
@@ -128,7 +126,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
         
                 except ValueError:
                     pass
-            elif query == 5: # select clã
+            elif query == 5: # Digite 5 para mostrar os Clãs ocupados;
                 analise_operacao = True
                 sistema_cla = """『🍃- °  Clãs, Familia, Grupos  ° -🍃』
 
@@ -548,7 +546,8 @@ Copiado com sucesso!
         
                 except ValueError:
                     print("")
-            if query == 6:
+            
+            if query == 6: # Digite 6 para mostrar a Ficha de Criação.
                 analise_operacao = True
                 sistema_ficha = print('''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m̶ { ° -🗃️』
    
@@ -573,6 +572,7 @@ Copiado com sucesso!
  ╘ D̶a̶t̶a̶ d̶e̶ C̶r̶i̶a̶ç̶ã̶o̶ ↝:''')
                 try:
                     copiar = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+                    
                     if copiar == 1:
                         pyperclip.copy(sistema_ficha)
                         print('\nCopiado com sucesso!')
@@ -582,20 +582,25 @@ Copiado com sucesso!
         
                 except ValueError:
                     pass
+
             elif query == 7:
                 analise_operacao = True
                 commit_invo()
-            elif query == 8:
+
+            elif query == 10: # Digite 10 para adicionar um novo player;
                 analise_operacao = True
                 commit_player()
-            elif query == 9:
+
+            elif query == 11: # Digite 11 para adicionar um novo personagem.
                 analise_operacao = True
                 commit_pp()
       
             else:
                 print('O valor não corresponde. Tente novamente')
-                analise_operacao = False             
+                
+
         except ValueError:
             print('O valor não corresponde. Tente novamente')
-            analise_operacao = False  
-    return analise_operacao
+              
+
+    return
