@@ -1,9 +1,7 @@
-select pp.nome from pp, invo 
+select pp.id_pp, pp.nome 
 
-	where invo.id_invo = ?
+from pp, invo 
 
-	pp.id_pp = invo.id_pp_1 
+where pp.id_pp = invo.id_pp_1 
 
-	or 
-
-	pp.id_pp = invo.id_pp_2
+and invo.id_invo = ?
