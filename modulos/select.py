@@ -2,9 +2,9 @@ import pandas as pd
 from modulos.conecao import *
 import pyperclip
 
-def copiar(objeto):
+def copiar(objeto): # função para copiar os objetos para área de transferência
     try:
-        objeto_copiar = int(input('\nDeseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+        objeto_copiar = int(input('\nDeseja copiar para área de transferência? "1" para sim e qualquer tecla para não\n\nR: '))
         if objeto_copiar == 1:
             objeto_copiado = pyperclip.copy(objeto)
             print('\nCopiado com sucesso!')
@@ -15,7 +15,7 @@ def copiar(objeto):
         pass
     return objeto_copiado     
 
-def sistema_nome(df):
+def sistema_nome(df): # função para mostrar junto ao sistema os nomes dos personagens
     sistema_nome = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ N̶o̶m̶e̶s̶  ° -🚻』
 
        →: O que são "Nomes de PP"?
@@ -27,7 +27,7 @@ Como devem saber, o RPG é de criação, onde fazemos do 0 nossos personagens. N
     copiar(sistema_nome)
     return
 
-def sistema_aparencia(df):
+def sistema_aparencia(df): # função para mostrar junto ao sistema as aparências dos personagens
     sistema_aparencia = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ A̶p̶a̶r̶ê̶n̶c̶i̶a̶  ° -🚻』
 
        →: O que é "Aparência"?
@@ -39,9 +39,7 @@ Como devem saber, o RPG é de criação, onde fazemos do 0 nossos personagens. N
     copiar(sistema_aparencia)
     return
 
-#
-
-def sistema_registro_ninja(df):
+def sistema_registro_ninja(df): # função para mostrar junto ao sistema os registros ninjas dos personagens
     sistema_registro_ninja = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ R̶e̶g̶i̶s̶t̶r̶o̶ N̶i̶n̶j̶a̶  ° -🚻』
 
        →: O que é "Registro Ninja"?
@@ -56,7 +54,7 @@ Baseado no sistema de banco, onde cada ninja tem seu cartão e identificação *
 
 #
 
-def select(sql):
+def select(sql):     # função que decta qual tipo de ação eu desejo fazer
     try:
         df = str(pd.read_sql_query(sql, con=engine))
 
@@ -89,7 +87,7 @@ def ficha():
 ''')
     
     try:
-        copiar = int(input('\nDeseja copiar para área de transferência? "1" para sim e qualquer tecla para não: '))
+        copiar = int(input('\nDeseja copiar para área de transferência? "1" para sim e qualquer tecla para não\nR: '))
         if copiar == 1:
             pyperclip.copy(ficha)
             print('\nCopiado com sucesso!')
