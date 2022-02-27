@@ -1,6 +1,6 @@
 import pandas as pd
 from modulos.conecao import *
-import re
+
 
 # atualizar os invo
 def atualizacao_invo(nome, id): 
