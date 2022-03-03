@@ -1,5 +1,5 @@
 from datetime import datetime
-from modulos.updater import atualizacao_base
+from modulos.updater import update_base
 
 tempo = datetime.now()
 
@@ -22,47 +22,48 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
 
     『🚹- °  L̶i̶s̶t̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -🚹』
 
-    『❌』> {atualizacao_base('3° Raikage', 2)}
-    『❌』> {atualizacao_base('4° Raikage', 1)}
-    『❌』> {atualizacao_base('Amado', 1)}
-    『❌』> {atualizacao_base('Boruto', 1)}
-    『❌』> {atualizacao_base('Code', 1)}
-    『❌』> {atualizacao_base('Darui', 3)}
-    『❌』> {atualizacao_base('Deidara', 3)}
-    『❌』> {atualizacao_base('Gaara', 3)}
-    『❌』> {atualizacao_base('Haku', 3)}
-    『❌』> {atualizacao_base('Hashirama', 1)}
-    『❌』> {atualizacao_base('Hiruko', 1)}
-    『❌』> {atualizacao_base('Itachi', 2)}
-    『❌』> {atualizacao_base('Jigen', 1)}
-    『❌』> {atualizacao_base('Jiraya', 3)}
-    『❌』> {atualizacao_base('Juugo', 3)}
-    『❌』> {atualizacao_base('Kabuto', 1)}
-    『❌』> {atualizacao_base('Kahyo', 2)}
-    『❌』> {atualizacao_base('Karin', 2)}
-    『❌』> {atualizacao_base('Kashin Koji', 2)}
-    『❌』> {atualizacao_base('Kakashi', 2)}
-    『❌』> {atualizacao_base('Kawaki', 1)}
-    『❌』> {atualizacao_base('Kidoumaru', 3)}
-    『❌』> {atualizacao_base('Kisame', 3)}
-    『❌』> {atualizacao_base('Konan', 3)}
-    『❌』> {atualizacao_base('Madara', 5)}
-    『❌』> {atualizacao_base('Mei Terumi', 2)}
-    『❌』> {atualizacao_base('Minato', 2)}
-    『❌』> {atualizacao_base('Neji', 5)}
-    『❌』> {atualizacao_base('Obito', 1)}
-    『❌』> {atualizacao_base('Orochimaru', 1)} 
-    『❌』> {atualizacao_base('Ranmaru', 3)}
-    『❌』> {atualizacao_base('Sakon', 3)}
-    『❌』> {atualizacao_base('Sasori', 1)}
-    『❌』> {atualizacao_base('Sasuke', 3)}
-    『❌』> {atualizacao_base('Shin Uchiha', 1)}
-    『❌』> {atualizacao_base('Shinno', 1)}
-    『❌』> {atualizacao_base('Shisui', 1)}
-    『❌』> {atualizacao_base('Shojoji', 3)}
-    『❌』> {atualizacao_base('Suigetsu', 5)}
-    『❌』> {atualizacao_base('Tobirama', 1)}
-    『❌』> {atualizacao_base('Tsunade', 2)}
-    『❌』> {atualizacao_base('Utakata', 3)}
-    『❌』> {atualizacao_base('Yakumo', 2)}
+    『❌』> {update_base('3° Raikage', 2)}
+    『❌』> {update_base('4° Raikage', 1)}
+    『❌』> {update_base('Amado', 1)}
+    『❌』> {update_base('Boruto', 1)}
+    『❌』> {update_base('Code', 1)}
+    『❌』> {update_base('Darui', 3)}
+    『❌』> {update_base('Deidara', 3)}
+    『❌』> {update_base('Gaara', 3)}
+    『❌』> {update_base('Haku', 3)}
+    『❌』> {update_base('Hashirama', 1)}
+    『❌』> {update_base('Hiruko', 1)}
+    『❌』> {update_base('Itachi', 2)}
+    『❌』> {update_base('Jigen', 1)}
+    『❌』> {update_base('Jiraya', 3)}
+    『❌』> {update_base('Juugo', 3)}
+    『❌』> {update_base('Kabuto', 1)}
+    『❌』> {update_base('Kahyo', 2)}
+    『❌』> {update_base('Karin', 2)}
+    『❌』> {update_base('Kashin Koji', 2)}
+    『❌』> {update_base('Kakashi', 2)}
+    『❌』> {update_base('Kawaki', 1)}
+    『❌』> {update_base('Kidoumaru', 3)}
+    『❌』> {update_base('Kisame', 3)}
+    『❌』> {update_base('Konan', 3)}
+    『❌』> {update_base('Madara', 5)}
+    『❌』> {update_base('Maito Guy', 2)}
+    『❌』> {update_base('Mei Terumi', 2)}
+    『❌』> {update_base('Minato', 2)}
+    『❌』> {update_base('Neji', 5)}
+    『❌』> {update_base('Obito', 1)}
+    『❌』> {update_base('Orochimaru', 1)} 
+    『❌』> {update_base('Ranmaru', 3)}
+    『❌』> {update_base('Sakon', 3)}
+    『❌』> {update_base('Sasori', 1)}
+    『❌』> {update_base('Sasuke', 3)}
+    『❌』> {update_base('Shin Uchiha', 1)}
+    『❌』> {update_base('Shinno', 1)}
+    『❌』> {update_base('Shisui', 1)}
+    『❌』> {update_base('Shojoji', 3)}
+    『❌』> {update_base('Suigetsu', 5)}
+    『❌』> {update_base('Tobirama', 1)}
+    『❌』> {update_base('Tsunade', 2)}
+    『❌』> {update_base('Utakata', 3)}
+    『❌』> {update_base('Yakumo', 2)}
 '''
