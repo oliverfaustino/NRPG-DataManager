@@ -1,4 +1,4 @@
-from modulos.updater import atualizacao_cla
+from modulos.updater import update_cla
 from datetime import datetime
 
 
@@ -230,7 +230,7 @@ cla = """『🍃- °  Clãs, Familia, Grupos  ° -🍃』
     Tem: Fios de Chakra Melhorados
     Jounnin E/A: Jubaku Mandara
     Jounnin E/A: Kagero Ninpo: Utakata
-    ● ━━━━━━━""".format(tempo.strftime('%d/%m/%Y %H:%M'), atualizacao_cla('Aburame', 10), atualizacao_cla('Akimichi', 10), atualizacao_cla('Uzumaki', 15), atualizacao_cla('Yamanaka', 10), atualizacao_cla('Nara', 10), atualizacao_cla('Inuzuka', 10),atualizacao_cla('Hagoromo', 10), atualizacao_cla('Senju', 10), atualizacao_cla('Uchiha', 20), atualizacao_cla('Hyuuga', 20), atualizacao_cla('Saturobi', 10), atualizacao_cla('Kurama', 5), atualizacao_cla('Iburi', 10), atualizacao_cla('Tsuchigumo', 5), atualizacao_cla('Kaguya', 10),atualizacao_cla('Hoshigaki', 10), atualizacao_cla('Hozuki', 10), atualizacao_cla('Kamizuru', 10), atualizacao_cla('Kazekage', 10), atualizacao_cla('Akasuna', 10), atualizacao_cla('Kamaitachi', 10), atualizacao_cla('Yotsuki', 10), atualizacao_cla('Chinoike', 10), atualizacao_cla('Juugo', 10), atualizacao_cla('Yuki', 10),atualizacao_cla('Prisão Celestial', 10), atualizacao_cla('Shiin', 10), atualizacao_cla('Fuuma', 10))
+    ● ━━━━━━━""".format(tempo.strftime('%d/%m/%Y %H:%M'), update_cla('Aburame', 10), update_cla('Akimichi', 10), update_cla('Uzumaki', 15), update_cla('Yamanaka', 10), update_cla('Nara', 10), update_cla('Inuzuka', 10),update_cla('Hagoromo', 10), update_cla('Senju', 10), update_cla('Uchiha', 20), update_cla('Hyuuga', 20), update_cla('Saturobi', 10), update_cla('Kurama', 5), update_cla('Iburi', 10), update_cla('Tsuchigumo', 5), update_cla('Kaguya', 10),update_cla('Hoshigaki', 10), update_cla('Hozuki', 10), update_cla('Kamizuru', 10), update_cla('Kazekage', 10), update_cla('Akasuna', 10), update_cla('Kamaitachi', 10), update_cla('Yotsuki', 10), update_cla('Chinoike', 10), update_cla('Juugo', 10), update_cla('Yuki', 10),update_cla('Prisão Celestial', 10), update_cla('Shiin', 10), update_cla('Fuuma', 10))
 
 
 familia = '''● ━━━━━━━ 
@@ -383,7 +383,7 @@ familia = '''● ━━━━━━━
     Tem: Agilidade Apurada
     Tem: Velocidade Apurada
     Tem: Dotes em Suiton
-    ● ━━━━━━━'''.format(atualizacao_cla('Yome', 10), atualizacao_cla('Namikaze', 10), atualizacao_cla('Ranmaru', 10), atualizacao_cla('Guren', 10), atualizacao_cla('Karatachi', 10), atualizacao_cla('Otenki', 10), atualizacao_cla('Sakon e Ukon', 10), atualizacao_cla('Kumotami', 10), atualizacao_cla('Pakura', 10), atualizacao_cla('Bakurei', 10), atualizacao_cla('Haruno', 10), atualizacao_cla('Hatake', 10), atualizacao_cla('Maito', 5), atualizacao_cla('Lee', 5), atualizacao_cla('Terumi', 10), atualizacao_cla('Shion', 5), atualizacao_cla('Rinji', 10), atualizacao_cla('Ameyuki', 10), atualizacao_cla('Izuno', 10))
+    ● ━━━━━━━'''.format(update_cla('Yome', 10), update_cla('Namikaze', 10), update_cla('Ranmaru', 10), update_cla('Guren', 10), update_cla('Karatachi', 10), update_cla('Otenki', 10), update_cla('Sakon e Ukon', 10), update_cla('Kumotami', 10), update_cla('Pakura', 10), update_cla('Bakurei', 10), update_cla('Haruno', 10), update_cla('Hatake', 10), update_cla('Maito', 5), update_cla('Lee', 5), update_cla('Terumi', 10), update_cla('Shion', 5), update_cla('Rinji', 10), update_cla('Ameyuki', 10), update_cla('Izuno', 10))
 
 
 grupo = '''● ━━━━━━━ 
@@ -412,6 +412,6 @@ grupo = '''● ━━━━━━━
     Tem: Manejo de Chakra
     Tem: Dotes em Infiltração
     Tem: Auto-Controle
-    ● ━━━━━━━ '''.format(atualizacao_cla('Jashinista', 5), atualizacao_cla('Samurai', 5), atualizacao_cla('Nokizaru', 5))
+    ● ━━━━━━━ '''.format(update_cla('Jashinista', 5), update_cla('Samurai', 5), update_cla('Nokizaru', 5))
 
 sistema_cla = cla + familia + grupo
