@@ -1,4 +1,4 @@
-from modulos.updater import atualizacao_invo
+from modulos.updater import update_invo
 from datetime import datetime
 
 
@@ -15,41 +15,41 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 🐸 Kuchiyose Sapos
 ● ━━━━━━━
        →: Sapos
-╘ {atualizacao_invo(nome='Gamakichi', id= '1')} 
-╘ {atualizacao_invo(nome='Gamahiro', id= '2')} 
-╘ {atualizacao_invo(nome='Gamabunta', id= '3')} 
-╘ {atualizacao_invo(nome='Fukasaku', id= '4')} 
-╘ {atualizacao_invo(nome='Gamaden', id= '5')}
-╘ {atualizacao_invo(nome='Gamagoro', id= '6')}
-╘ {atualizacao_invo(nome='Shima', id= '7')}
-╘ {atualizacao_invo(nome='Gamaken', id= '8')}
-╘ {atualizacao_invo(nome='Gamaraki', id= '9')}
-╘ {atualizacao_invo(nome='Gamatama', id= '10')}
-╘ {atualizacao_invo(nome='Gamatatsu', id= '74')}
-╘ {atualizacao_invo(nome='Sapo Gigante Comum', id= '11')}
-╘ {atualizacao_invo(nome='Sapo Gigante Comum', id= '111')}
-╘ {atualizacao_invo(nome='Contrato Mestre Dos Sapos', id= '12')} 
+╘ {update_invo(nome='Gamakichi', id= '1')} 
+╘ {update_invo(nome='Gamahiro', id= '2')} 
+╘ {update_invo(nome='Gamabunta', id= '3')} 
+╘ {update_invo(nome='Fukasaku', id= '4')} 
+╘ {update_invo(nome='Gamaden', id= '5')}
+╘ {update_invo(nome='Gamagoro', id= '6')}
+╘ {update_invo(nome='Shima', id= '7')}
+╘ {update_invo(nome='Gamaken', id= '8')}
+╘ {update_invo(nome='Gamaraki', id= '9')}
+╘ {update_invo(nome='Gamatama', id= '10')}
+╘ {update_invo(nome='Gamatatsu', id= '74')}
+╘ {update_invo(nome='Sapo Gigante Comum', id= '11')}
+╘ {update_invo(nome='Sapo Gigante Comum', id= '111')}
+╘ {update_invo(nome='Contrato Mestre Dos Sapos', id= '12')} 
 ● ━━━━━━━
 🦈 Kuchiyose Tubarões
 ● ━━━━━━━
        →: Tubarões
-╘ {atualizacao_invo(nome='Tubarões', id= '13')} 
-╘ {atualizacao_invo(nome='Tubarões', id= '133')} 
+╘ {update_invo(nome='Tubarões', id= '13')} 
+╘ {update_invo(nome='Tubarões', id= '133')} 
 ● ━━━━━━━
 🐶 Kuchiyose Cães 
 ● ━━━━━━━
        →: Cães
-╘ {atualizacao_invo(nome='Bull', id= '14')} 
-╘ {atualizacao_invo(nome='Tsuiga', id= '15')} 
-╘ {atualizacao_invo(nome='Pakkun', id= '16')} 
-╘ {atualizacao_invo(nome='Urushi', id= '17')} 
-╘ {atualizacao_invo(nome='Shiba', id= '18')} 
-╘ {atualizacao_invo(nome='Bisuke', id= '19')} 
-╘ {atualizacao_invo(nome='Akino', id= '199')} 
-╘ {atualizacao_invo(nome='Cães de Ni', id= '20')}
-╘ {atualizacao_invo(nome='Cão de Guarda', id= '21')}
-╘ {atualizacao_invo(nome='Ninken Comum', id= '22')}
-╘ {atualizacao_invo(nome='Ninken Comum', id= '222')} 
+╘ {update_invo(nome='Bull', id= '14')} 
+╘ {update_invo(nome='Tsuiga', id= '15')} 
+╘ {update_invo(nome='Pakkun', id= '16')} 
+╘ {update_invo(nome='Urushi', id= '17')} 
+╘ {update_invo(nome='Shiba', id= '18')} 
+╘ {update_invo(nome='Bisuke', id= '19')} 
+╘ {update_invo(nome='Akino', id= '199')} 
+╘ {update_invo(nome='Cães de Ni', id= '20')}
+╘ {update_invo(nome='Cão de Guarda', id= '21')}
+╘ {update_invo(nome='Ninken Comum', id= '22')}
+╘ {update_invo(nome='Ninken Comum', id= '222')} 
 ● ━━━━━━━
 🐚 Kuchiyose Mariscos
 ● ━━━━━━━
