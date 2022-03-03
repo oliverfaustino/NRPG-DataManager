@@ -17,5 +17,4 @@ sistema_ficha ='''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m�
     ╘ C̶l̶ã̶ (̶A̶t̶é̶ 2)̶ ↝: 
     ╘ E̶l̶e̶m̶e̶n̶t̶o̶ I̶n̶i̶c̶i̶a̶s̶(̶1̶)̶ ↝:
     ╘ ̶S̶h̶i̶n̶o̶b̶i / ̶N̶u̶k̶k̶e̶n̶i̶n / A̶n̶d̶a̶r̶i̶l̶h̶o̶ ↝: 
-    ╘ ̶R̶e̶g̶i̶s̶t̶r̶o̶ N̶i̶n̶j̶a̶ ↝:
     ╘ D̶a̶t̶a̶ d̶e̶ C̶r̶i̶a̶ç̶ã̶o̶ ↝:'''
