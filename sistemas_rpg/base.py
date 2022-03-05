@@ -57,6 +57,7 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
     『❌』> {update_base('Sakon', 3)}
     『❌』> {update_base('Sasori', 1)}
     『❌』> {update_base('Sasuke', 3)}
+    『❌』> {update_base('Seikei', 3)}
     『❌』> {update_base('Shin Uchiha', 1)}
     『❌』> {update_base('Shinno', 1)}
     『❌』> {update_base('Shisui', 1)}
