@@ -7,15 +7,13 @@ from modulos.conecao import *
 def add_arma():
     confirmacao = False
     while confirmacao == False:
-        arma = str(input('Digite o nome completo da Arma: '))
-        personagem_1 = str(input('Digite o nome do personagem que possui a arma: ')) 
-        personagem_2 = str(input('Digite o nome do personagem que possui a arma: ')) 
-        personagem_3 = str(input('Digite o nome do personagem que possui a arma: ')) 
-        personagem_4 = str(input('Digite o nome do personagem que possui a arma: ')) 
-        personagem_5 = str(input('Digite o nome do personagem que possui a arma: ')) 
-        personagem_6 = str(input('Digite o nome do personagem que possui a arma: '))
-        id_arma = int(input('Digite o ID da arma: '))
-        sql = f"INSERT INTO arma_info(arma, personagem_1, personagem_2, personagem_3, personagem_4, personagem_5, personagem_6, id_arma) VALUES ('{arma}', '{personagem_1}', '{personagem_2}', '{personagem_3}', '{personagem_4}', {personagem_5}', '{personagem_6}, {id_arma})"
+        select('Select * from arma') # select para mostrar as armas, seus id e dono
+        id_invo = str(input('Digite o ID da arma: '))
+        select('Select id_pp, nome from pp')
+        pp = float(input('Digite o id do pp: '))
+        posicao = int(input('Digite a campo: '))
+        sql = f"update arma set id_pp_{posicao} = {pp} where id_invo = {id_invo}"
+        
         try:
             confirmacao_1 = int(input(f'''Confirmação dos valores:
  
@@ -25,9 +23,10 @@ está correto? 1 para "sim" 0 para "não". '''))
             if confirmacao_1 == 1:
                 confirmacao = True
                 try:
-                    df = pd.read_sql_query(sql, con=engine)
+                    pd.read_sql_query(sql, con=engine)
+                    break
                 finally:
-                    pass
+                    break
 
             elif confirmacao_1 == 0:
                  confirmacao = False
@@ -37,15 +36,17 @@ está correto? 1 para "sim" 0 para "não". '''))
             print('O valor não corresponde. Tente novamente')
     return sql
 
-#INSERT INTO invo_info MUDAAAAAAAAAAR
-def add_invo(): 
+# adicionar um player numa invo
+def add_invo():
     confirmacao = False
     while confirmacao == False:
-        invo = str(input('Digite o nome da invocação: '))
-        personagem_1 = str(input('Digite o nome do personagem que possui a invo(1): ')) 
-        personagem_2 = str(input('Digite o nome do personagem que possui a invo(2): ')) 
-        id_invo = int(input('Digite o ID da invo: '))
-        sql = f"INSERT INTO invo_info(invo, personagem_1, personagem_2, id_invo) VALUES ('{invo}', '{personagem_1}', '{personagem_2}', {id_invo})"
+        
+        select('Select * from invo') # select para mostrar as invos, seus id e dono
+        id_invo = str(input('Digite o ID da invo: '))
+
+        select('Select id_pp, nome from pp')
+        pp = float(input('Digite o id do pp: ')) 
+        sql = f"update invo set id_pp = {pp} where id_invo = {id_invo}"
         try:
             confirmacao_1 = int(input(f'''Confirmação dos valores:
  
@@ -93,7 +94,9 @@ está correto? 1 para "sim" 0 para "não". '''))
                 confirmacao = True
                 try:
                     pd.read_sql_query(sql, con=engine)
-                    pass
+                    input_add_pp = str(input('Deseja adicionar um Personagem para esse Player? 1 para "Sim" e qualquer tecla para "sim": '))
+                    if input_add_pp == "1":
+                        add_pp()
                 except:
                     pass
 
@@ -147,7 +150,6 @@ def add_pp():
     4 = Doton
     5 = Suiton
 ''')) 
-        registro_ninja = int(input('Registro ninja: '))
         data_criacao= str(input('Data de criação: '))
         
         # mostras as hiden dentro do sistema
@@ -170,9 +172,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao)
+             data_criacao)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}');'''
                 else: 
                     id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -183,9 +185,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_traco_unico_1)
+             data_criacao, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_traco_unico_1});'''
                     else:
                         id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -195,10 +197,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_traco_unico_1, 
+             data_criacao, id_traco_unico_1, 
             id_traco_unico_2)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
             else:
                 id_kkg_2 = float(input('2° Kekkei Genkai: '))
@@ -212,9 +214,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_kkg_1)
+             data_criacao, id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -223,9 +225,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_kkg_1, id_traco_unico_1)
+             data_criacao, id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1}, {id_traco_unico_1});'''
                         else: # 0 HIDEN 1 KKG E 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))                 
@@ -233,11 +235,11 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                
                 else:
@@ -251,10 +253,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -263,9 +265,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1)
+             data_criacao, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1});'''
                         else: # SEM HIDEN 3 KKG 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -273,10 +275,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao,id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
+             data_criacao,id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
         else:
@@ -296,9 +298,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1)
+             data_criacao, id_hiden_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -307,9 +309,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_traco_unico_1)
+             data_criacao, id_hiden_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_traco_unico_1});''' 
                         else: # 1 HIDEN 0 KKG E 3 TRAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -317,11 +319,11 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
                 else:
                     id_kkg_2 = float(input('2° Kekkei Genkai: '))
@@ -335,9 +337,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_kkg_1)
+             data_criacao, id_hiden_1, id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1});'''
                         else:
                             id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -346,9 +348,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1)
+             data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_traco_unico_1});'''
                             else: # 1 HIDEN 1 KKG E 3 TRAÇO
                                 id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -356,10 +358,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1, 
+             data_criacao, id_hiden_1, id_kkg_1, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''                  
                     else:
@@ -373,10 +375,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                         else:
                             id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -385,11 +387,11 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1},{id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1});'''
                             else:
                                 id_traco_unico_3 = int(input('3° Traço Único: '))
@@ -397,10 +399,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
+             data_criacao, id_hiden_1, id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, {id_traco_unico_3});'''
             else:
                 id_hiden_3 = float(input('3° Hiden: '))
@@ -418,9 +420,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3)
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3});'''
                     else:
                         id_traco_unico_2 = int(input('2° Traço Único: '))
@@ -429,9 +431,9 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3, id_traco_unico_1)
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_traco_unico_1});'''
                         else: # 3 HIDEN 0 KKG E 3 LAÇO
                             id_traco_unico_3 = int(input('3° Traço Único: '))    
@@ -439,11 +441,11 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''   
                 else:
@@ -458,10 +460,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1});'''
                         else: 
@@ -471,10 +473,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_traco_unico_1});'''
                             else: # 3 HIDEN 1 KKG E 3 TRAÇO
@@ -483,10 +485,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_, id_traco_unico_1, id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
@@ -501,10 +503,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
                         else:
@@ -514,10 +516,10 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{registro_ninja}', 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1});'''
                             else: # 3 HIDEN 3 KKG E 3 TRAÇO
@@ -526,11 +528,11 @@ def add_pp():
         INSERT INTO pp(
             id_pp, id_player, nome, aparencia, sangue, base, cla_1, cla_2, 
             id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
-            registro_ninja, data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
+             data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
             id_kkg_1, id_kkg_2, id_kkg_3, id_traco_unico_1, 
             id_traco_unico_2, id_traco_unico_3)
     VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base}', '{cla_1}', '{cla_2}', 
-            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, {registro_ninja}, 
+            {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, 
             '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, 
             {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, {id_traco_unico_1}, {id_traco_unico_2}, 
             {id_traco_unico_3});'''
