@@ -266,13 +266,13 @@
     <column id="COL67" populated="true" UUID="81bfa533-d548-4f8b-b159-6de907b5d642" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp_3" nullable="1" physicalName="id_pp_3" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL68" populated="true" UUID="f77dbdc2-d9f4-43e2-af6e-51420a56d186" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp_4" nullable="1" physicalName="id_pp_4" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL68" populated="true" UUID="f77dbdc2-d9f4-43e2-af6e-51420a56d186" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3_1" defaultValue="" name="id_pp_4" nullable="1" physicalName="id_pp_4" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL69" populated="true" UUID="15f8e9a4-4fc5-499a-9d15-6801ce630061" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp_5" nullable="1" physicalName="id_pp_5" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL69" populated="true" UUID="15f8e9a4-4fc5-499a-9d15-6801ce630061" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3_2" defaultValue="" name="id_pp_5" nullable="1" physicalName="id_pp_5" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL70" populated="true" UUID="0beea215-b1d5-4108-86ad-c5fda4e124d9" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp_6" nullable="1" physicalName="id_pp_6" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL70" populated="true" UUID="0beea215-b1d5-4108-86ad-c5fda4e124d9" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3_3" defaultValue="" name="id_pp_6" nullable="1" physicalName="id_pp_6" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -344,7 +344,7 @@
     <column id="COL88" populated="true" UUID="39bfe15d-3539-4d9e-b583-4cf8b2dff1e6" autoIncrement="false" autoIncrementSequenceName="reen_nome_seq" defaultValue="" name="nome" nullable="0" physicalName="nome" precision="30" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL89" populated="true" UUID="aed0741a-e209-47d5-8e9f-f72f30d00d74" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp" nullable="1" physicalName="id_pp" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL89" populated="true" UUID="aed0741a-e209-47d5-8e9f-f72f30d00d74" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3_4" defaultValue="" name="id_pp" nullable="1" physicalName="id_pp" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -361,7 +361,7 @@
   <table id="TAB92" populated="true" UUID="716dd9cb-d574-4176-b10e-d961651166ce" name="pp" objectType="TABLE" physicalName="pp" >
    <remarks></remarks>
    <folder id="FOLTAB921" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL93" populated="true" UUID="09d4e14d-31d6-4be1-aa12-7795925518e0" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3" defaultValue="" name="id_pp" nullable="0" physicalName="id_pp" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL93" populated="true" UUID="09d4e14d-31d6-4be1-aa12-7795925518e0" autoIncrement="false" autoIncrementSequenceName="pp_id_pp_seq_3_5" defaultValue="" name="id_pp" nullable="0" physicalName="id_pp" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL94" populated="true" UUID="d657183e-3d36-4de3-bc33-3e0b654744c9" autoIncrement="false" autoIncrementSequenceName="player_nome_seq_1" defaultValue="" name="id_player" nullable="0" physicalName="id_player" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -660,10 +660,10 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="1.0" viewportX="0" viewportY="49" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="850" y="143" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB10" x="1070" y="104" bgColor="0xc7d0df" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB15" x="1088" y="434" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
