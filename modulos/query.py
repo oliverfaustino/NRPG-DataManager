@@ -73,8 +73,8 @@ def query_adicoes():
         
         ["0" para voltar]
 
-        "1" para fazer um INSERTO INTO arma * em desenvolvimento * ;
-        "2" para fazer um INSERT INTO invo * em desenvolvimento * ;
+        "1" para adicionar um usuário (arma)
+        "2" para adicionar um usuário (invo)
         "3" para adicionar um novo Player
         "4" para adicionar um novo Personagem
         "5" para adicionar pontos de Check In
@@ -204,6 +204,7 @@ R: '''))
 
 
 def query_atualizacoes_player():
+    
     return
 
 
@@ -220,10 +221,9 @@ def query_atualizacoes_pp():
         Personagem:
             "1" para mostrar os Nomes
             "2" para mostrar as Aparências
-            "3" para mostrar os Registros Ninja      
-            "4" para mostrar as Bases
-            "5" para mostrar os Clãs
-            "6" para mostrar a Ficha de Criação
+            "3" para mostrar as Bases
+            "4" para mostrar os Clãs
+            "5" para mostrar a Ficha de Criação
 
 R: '''))
             if query_atualizacoes_pp == 0:
@@ -238,21 +238,17 @@ R: '''))
                 confirmacao = True
                 select('select aparencia FROM pp ORDER BY aparencia ASC;')
 
-            elif query_atualizacoes_pp == 3: # Digite 3 para mostrar os Registros ninja ocupados; 
-                confirmacao = True
-                select('select registro_ninja from pp order by registro_ninja asc')
-
-            elif query_atualizacoes_pp == 4: # "4" para mostrar as Bases
+            elif query_atualizacoes_pp == 3: # mostrar as Bases
                 confirmacao = True          
                 print(sistema_base)
                 copiar(sistema_base)
 
-            elif query_atualizacoes_pp == 5: # Digite 5 para mostrar os Clãs ocupados;
+            elif query_atualizacoes_pp == 4: # mostrar os Clãs ocupados;
                 confirmacao = True             
                 print(sistema_cla)
                 copiar(sistema_cla)
 
-            elif query_atualizacoes_pp == 6: # Digite 6 para mostrar a Ficha de Criação.
+            elif query_atualizacoes_pp == 5: # mostrar a Ficha de Criação.
                 confirmacao = True
                 print(sistema_ficha)
                 copiar(sistema_ficha)
@@ -357,10 +353,9 @@ def query_buscas_pp():
         Personagens:
             "1" busca por ID
             "2" busca por Nome
-            "3" busca por Registro Ninja
-            "4" busca por Base
+            "3" busca por Base
             "5" busca por 
-            "7" busca por Dono
+            "6" busca por Dono
 R:'''))
 
             if query_buscas_pp == 0:
