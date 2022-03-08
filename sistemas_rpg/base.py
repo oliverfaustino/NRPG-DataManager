@@ -33,6 +33,7 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
     『❌』> {update_base('Haku', 3)}
     『❌』> {update_base('Hashirama', 1)}
     『❌』> {update_base('Hiruko', 1)}
+    『❌』> {update_base('Hiruzen', 2)}
     『❌』> {update_base('Itachi', 2)}
     『❌』> {update_base('Jigen', 1)}
     『❌』> {update_base('Jiraya', 3)}
