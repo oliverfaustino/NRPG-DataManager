@@ -54,130 +54,141 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 🐚 Kuchiyose Mariscos
 ● ━━━━━━━
        →: Mariscos
-╘ Ouhamaguri: 
-╘ Rei Concha: 
-╘ Marisco Comum ( pode-se ter até 2 invocadores ): 
+╘ {update_invo(nome='Ouhamaguri', id= '23')}
+╘ {update_invo(nome='Rei Concha', id= '24')} 
+╘ {update_invo(nome='Marisco Comum', id= '25')}
+╘ {update_invo(nome='Marisco Comum', id= '255')}  
 ● ━━━━━━━
 🐍 Kuchiyose Cobras
 ● ━━━━━━━
        →: Cobras
-╘ Cobras Comum ( pode-se ter até 2 invocadores ):
-╘ Kyodaija:
-╘ Cobra Gigante Comum ( pode-se ter até 2 invocadores ):
-╘ Manda: 
-╘ Aoda: 
-╘ Garaga:
-╘ Manda 2: 
-╘ Serpente de 3 cabeças:
-╘ Contrato Mestre:
+╘ {update_invo(nome='Manda', id= '26')} 
+╘ {update_invo(nome='Aoda', id= '27')} 
+╘ {update_invo(nome='Garaga', id= '28')} 
+╘ {update_invo(nome='Manda 2', id= '29')} 
+╘ {update_invo(nome='Cobra Gigante Comum', id= '30')}
+╘ {update_invo(nome='Cobra Gigante Comum', id= '31')}
+╘ {update_invo(nome='Contrato Meste', id= '32')}
 ● ━━━━━━━
 🐒 Kuchiyose Macacos
 ● ━━━━━━━
        →: Macacos
-╘ Onbaa:
-╘ Saru:
-╘ Enra: 
-╘ Enma:
-╘ Macaco Comum ( pode-se ter até 2 invocadores ): 
+╘ {update_invo(nome='Rei Macaco: Enma', id= '33')}
+╘ {update_invo(nome='Enra', id= '34')}
+╘ {update_invo(nome='Macaco Comum', id= '35')} 
+╘ {update_invo(nome='Macaco Comum', id= '355')}
 ● ━━━━━━━
 🐢 Kuchiyose Tartarugas
 ● ━━━━━━━
        →: Tartarugas
-╘ Ninkame:
-╘ Tartaruga Comum ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Ninkame', id= '36')}
+╘ {update_invo(nome='Tartaruga Comum', id= '37')}
+╘ {update_invo(nome='Tartaruga Comum', id= '377')}
 ● ━━━━━━━
 🐌 Kuchuyise Lesmas
 ● ━━━━━━━
        →: Lesmas
-╘ Katsuyu: 
-╘ Lesma Gigante ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Katsuyu', id= '38')}
+╘ {update_invo(nome='Lesma Gigante Comum', id= '39')}
+╘ {update_invo(nome='lesma Gigante Comum', id= '40')}
 ● ━━━━━━━
 🐰 Kuchiyose Fuinhas
 ● ━━━━━━━
        →: Fuinhas
-╘ Kamatari: 
-╘ Fuinha Comum ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Kamatari', id= '41')}
+╘ {update_invo(nome='Fuinha Comum', id= '42')}
+╘ {update_invo(nome='Fuinha Comum', id= '422')}
 ● ━━━━━━━
 🐘 Kuchiyose Anta-Elefante
 ● ━━━━━━━
        →: Anta-Elefante
-╘ Baku: 
-╘ Anta-Elefante ( pode-se ter até 2 invocadores ): 
+╘ {update_invo(nome='Baku', id= '43')}
+╘ {update_invo(nome='Anta-Elefante Comum', id= '44')}
+╘ {update_invo(nome='Anta-Elefante Comum', id= '444')}
 ● ━━━━━━━
 🦅 Kuchiyose Falcões
 ● ━━━━━━━
        →: Falcões
 ╘Falcão Comum ( pode-se ter até 2 invocadores ): 
-╘ Garuda: 
-╘ Águia Gigante: 
+╘ {update_invo(nome='Garuda', id= '45')}
+╘ {update_invo(nome='Águia Gigante', id= '46')}
+╘ {update_invo(nome='Falcão Gigante Comum', id= '47')}
+╘ {update_invo(nome='Falcão Gigante Comum', id= '48')}
 ● ━━━━━━━
 🕊 Kuchiyose Corvos
 ● ━━━━━━━
        →: Corvos
-╘ Corvos Comum ( pode-se ter até 2 invocadores ): 
+╘ {update_invo(nome='Corvos', id= '49')}
+╘ {update_invo(nome='Corvos', id= '499')}
 ● ━━━━━━━
 🕷 Kuchiyose Aranhas
 ● ━━━━━━━
        →: Aranhas
-╘ Kyodaigumo: 
-╘ Aranha Comum ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Kyodaigumo', id= '50')} 
+╘ {update_invo(nome='Aranha Gigante C0mum', id= '51')}
+╘ {update_invo(nome='Aranha Gigante Comum', id= '511')}
 ● ━━━━━━━
 🦎 Salamandras
 ● ━━━━━━━
        →: Salamandras
-╘ Ibuse: 
-╘ Salamandra Comum ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Ibuse', id= '52')} 
+╘ {update_invo(nome='Salamandra Comum', id= '53')}
+╘ {update_invo(nome='Salamandra Comum', id= '533')}
 ● ━━━━━━━
 🐟 Kuchiyose Piranhas
 ● ━━━━━━━
        →: Piranhas
-╘ Cardume de Piranhas (15 piranhas. Pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Piranhas', id= '54')}
+╘ {update_invo(nome='Piranhas', id= '544')}
 ● ━━━━━━━
 🦝 Kuchyose Guaxinim
 ● ━━━━━━━
        →: Guaxinim
-╘ Ponta:
-╘ Guaxinim Comum ( pode-se ter até 2 invocadores ):
-● ━━━━━━━
-🐺 Kuchyose Lobos
-● ━━━━━━━
-       →: Lobos
-╘Lobos Comuns ( pode-se ter até 2 invocadores ):
+╘ {update_invo(nome='Ponta', id= '55')}
+╘ {update_invo(nome='Guaxinim Comum', id= '566')}
 ● ━━━━━━━
 🗿 Kuchiyose Golem da Prisão de Terra
 ● ━━━━━━━
        →: Golem da Prisão de Terra
-╘ Golem da Prisão de Terra:
+╘ {update_invo(nome='Golem da Prisão de Terra', id= '57')}
+╘ {update_invo(nome='Golem da Prisão de Terra', id= '577')}
 ● ━━━━━━━
 🦟Kuchiyose Inseto gigante
 ● ━━━━━━━
        →: Insetos
-╘ Inseto Gigante:
-╘ Abelha Gigante:
+╘ {update_invo(nome='Inseto Gigante', id= '58')}
+╘ {update_invo(nome='Inseto Gigante', id= '588')}
+╘ {update_invo(nome='Abelha Gigante', id= '59')}
+╘ {update_invo(nome='Abelha Gigante', id= '599')}
 ● ━━━━━━━
 ⛩️ Rashōmon
 ● ━━━━━━━
        →: Rashomon
-╘ Rashōmon Quíntuplo: 
-╘ Rashōmon Triplo:
-╘ Rashōmon:
+╘ {update_invo(nome='Rashōmon Quíntuplo', id= '60')}
+╘ {update_invo(nome='Rashōmon Triplo', id= '61')}
+╘ {update_invo(nome='Rashōmon', id= '62')}
 ● ━━━━━━━
 🦎Kuchiyose de Camaleão
 ● ━━━━━━━
        →: Camaleão
-╘Shiromari:
-╘Camaleão Comum ( pode-se ter até 2 invocadores ): 
+╘ {update_invo(nome='Shiromari', id= '63')}
+╘ {update_invo(nome='Camaleão Comum', id= '64')}
+╘ {update_invo(nome='Camaleão Comum', id= '644')}
 ● ━━━━━━━
        →: 🐾Invocações Gigante do Caminho Animal
 ● ━━━━━━━
-╘ Yatagarasu:
-╘ Quimera Gigante: 
-╘ Camaleão Gigante:
-╘ Panda Gigante:
-╘ Touro Gigante:
-╘ Rinoceronte Gigante:
-╘ Crustáceo Gigante:
-╘ Centopeia Gigante:
+╘ {update_invo(nome='Yatagarasu', id= '65')}
+╘ {update_invo(nome='Quimera Gigante', id= '66')}
+╘ {update_invo(nome='Camaleão Gigante', id= '67')}
+╘ {update_invo(nome='Panda Gigante', id= '68')}
+╘ {update_invo(nome='Touro Gigante', id= '69')}
+╘ {update_invo(nome='Rinoceronte Gigante', id= '70')}
+╘ {update_invo(nome='Crustáceo Gigante', id= '71')}
+╘ {update_invo(nome='Centopeia Gigante', id= '72')}
+● ━━━━━━━
+       →: 🐾Invocações de Yokai
+● ━━━━━━━
+╘ {update_invo(nome='Nue', id= '73')}
 ● ━━━━━━━
 
        →: Criação de Invocação
