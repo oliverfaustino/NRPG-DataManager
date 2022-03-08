@@ -1,10 +1,10 @@
 import sys
 
 # sistemas do rpg #
-from sistemas_rpg.sistema_invo import *
-from sistemas_rpg.sistema_base import *
-from sistemas_rpg.sistema_ficha import *
-from sistemas_rpg.sistema_cla import *
+from sistemas_rpg.invo import *
+from sistemas_rpg.base import *
+from sistemas_rpg.ficha import *
+from sistemas_rpg.cla import *
 from modulos.info import *
 
 # modulos do programa #
