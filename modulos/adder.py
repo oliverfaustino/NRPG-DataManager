@@ -1,6 +1,6 @@
-from tokenize import Ignore
 import pandas as pd
-from sqlalchemy import except_all
+import phonenumbers
+
 from modulos.utils import *
 from modulos.conecao import *
 
@@ -77,12 +77,15 @@ def add_player():
         print('\nSobre o Player à ser registrado')
         id_player = int(input('Id: '))
         nome = str(input('Nome: '))
-        numero = int(input('Número: ')) 
+        numero = str(input('Número (BR): '))
         recrutador = int(input('Recrutado por: '))
         check_in = 0
+        
+        #formatar o número do player
+        #numero_ajustado = phonenumbers.parse(numero, "BB")
         sql = f'''INSERT INTO player(
             id_player, nome, numero, recrutador, check_in)
-    VALUES ({id_player}, '{nome}', {numero}, {recrutador}, {check_in});
+    VALUES ({id_player}, '{nome}', '{numero}', {recrutador}, {check_in});
 '''
         try:
             confirmacao_1 = int(input(f'''Confirmação dos valores:
@@ -91,14 +94,17 @@ def add_player():
 
 está correto? 1 para "sim" 0 para "não". '''))
             if confirmacao_1 == 1:
-                confirmacao = True
                 try:
                     pd.read_sql_query(sql, con=engine)
-                    input_add_pp = str(input('Deseja adicionar um Personagem para esse Player? 1 para "Sim" e qualquer tecla para "sim": '))
-                    if input_add_pp == "1":
-                        add_pp()
                 except:
                     pass
+                
+                input_add_pp = str(input('Deseja adicionar um Personagem para esse Player? 1 para "sim" e qualquer tecla para "não": '))
+                if input_add_pp == "1":
+                    confirmacao = True
+                    add_pp(p_add_player = 1, p_id_player = id_player)
+                else:
+                    confirmacao = True
 
             elif confirmacao_1 == 0:
                  confirmacao = False
@@ -109,13 +115,34 @@ está correto? 1 para "sim" 0 para "não". '''))
     return sql
 
 #INSERT INTO pp
-def add_pp():
+def add_pp(p_add_player = 0, p_id_player = 0):
+    if p_add_player == 1:
+        confirmacao = False
+        while confirmacao == False:
+
+             id_player = p_id_player
+             id_pp = float(p_id_player)+ 0.1 
+             print(f'Id do personagem: {id_pp}')
+             print(f'Id do player dono do personagem: {id_player}')
+             confirmacao = True
+    else:
+        confirmacao = False
+        while confirmacao == False:
+
+            select('select id_player, nome from player order by id_player asc')
+            print('\nSobre o Personagem à ser registrado')
+            id_pp = float(input('Id do personagem: '))
+            
+            str(id_pp) 
+            id_player = id_pp[0:id_pp.find('.')]
+            print(f'Id do player dono do personagem: {id_player}')
+            
+            float(id_pp)
+            int(id_player)
+            confirmacao = True
+
     confirmacao = False
-    while confirmacao == False:
-        select('select id_player, nome from player order by id_player asc')
-        print('\nSobre o Personagem à ser registrado')
-        id_pp = float(input('Id do personagem: '))
-        id_player = int(input('Id do player dono do personagem: '))
+    while confirmacao == False:    
         nome = str(input('Nome: '))
         aparencia = str(input('Aparência: '))
         sangue = str(input('Tipo sanguíneo: '))
