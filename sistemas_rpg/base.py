@@ -30,6 +30,7 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
     『❌』> {update_base('Darui', 3)}
     『❌』> {update_base('Deidara', 3)}
     『❌』> {update_base('Gaara', 3)}
+    『❌』> {update_base('Gengetsu', 3)} 
     『❌』> {update_base('Haku', 3)}
     『❌』> {update_base('Hashirama', 1)}
     『❌』> {update_base('Hiruko', 1)}
@@ -43,10 +44,12 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
     『❌』> {update_base('Karin', 2)}
     『❌』> {update_base('Kashin Koji', 2)}
     『❌』> {update_base('Kakashi', 2)}
+    『❌』> {update_base('Kakuzu', 3)}
     『❌』> {update_base('Kawaki', 1)}
     『❌』> {update_base('Kidoumaru', 3)}
     『❌』> {update_base('Kisame', 3)}
     『❌』> {update_base('Konan', 3)}
+    『❌』> {update_base('Naruto', 3)}   
     『❌』> {update_base('Madara', 5)}
     『❌』> {update_base('Maito Guy', 2)}
     『❌』> {update_base('Mei Terumi', 2)}
@@ -56,7 +59,7 @@ sistema_base = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ B̶a̶s̶e̶s̶  ° -�
     『❌』> {update_base('Orochimaru', 1)} 
     『❌』> {update_base('Ranmaru', 3)}
     『❌』> {update_base('Sakon', 3)}
-    『❌』> {update_base('Sasori', 1)}
+    『❌』> {update_base('Sasori', 2)}
     『❌』> {update_base('Sasuke', 3)}
     『❌』> {update_base('Seikei', 3)}
     『❌』> {update_base('Shin Uchiha', 1)}
