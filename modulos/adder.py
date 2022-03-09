@@ -133,12 +133,10 @@ def add_pp(p_add_player = 0, p_id_player = 0):
             print('\nSobre o Personagem à ser registrado')
             id_pp = float(input('Id do personagem: '))
             
-            str(id_pp) 
-            id_player = id_pp[0:id_pp.find('.')]
-            print(f'Id do player dono do personagem: {id_player}')
-            
-            float(id_pp)
-            int(id_player)
+            s_id_pp= str(id_pp) 
+            s_id_player = s_id_pp[0:s_id_pp.find('.')]
+            print(f'Id do player dono do personagem: {s_id_player}')
+            id_player = int(s_id_player)
             confirmacao = True
 
     confirmacao = False
