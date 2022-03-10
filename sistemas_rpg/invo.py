@@ -125,7 +125,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 ● ━━━━━━━
        →: Aranhas
 ╘ {update_invo(nome='Kyodaigumo', id= '50')} 
-╘ {update_invo(nome='Aranha Gigante C0mum', id= '51')}
+╘ {update_invo(nome='Aranha Gigante Comum', id= '51')}
 ╘ {update_invo(nome='Aranha Gigante Comum', id= '511')}
 ● ━━━━━━━
 🦎 Salamandras
@@ -145,6 +145,7 @@ Atualizada no dia {(tempo.strftime('%d/%m/%Y %H:%M'))}
 ● ━━━━━━━
        →: Guaxinim
 ╘ {update_invo(nome='Ponta', id= '55')}
+╘ {update_invo(nome='Guaxinim Comum', id= '56')}
 ╘ {update_invo(nome='Guaxinim Comum', id= '566')}
 ● ━━━━━━━
 🗿 Kuchiyose Golem da Prisão de Terra
