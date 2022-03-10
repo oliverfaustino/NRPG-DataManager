@@ -7,7 +7,7 @@ from modulos.utils import select
 def update_invo(nome, id): 
     lista= str(pd.read_sql_query(f'select pp.id_pp, pp.nome from pp, invo where pp.id_pp = invo.id_pp and invo.id_invo = {id}', con=engine))
     invo_lista = lista.replace('id_pp', '').replace('nome', '').replace('0', '').split()
-    invo = f'{id} {nome}: {invo_lista};'
+    invo = f'({id}) {nome}: {invo_lista};'
     return invo
 
 
