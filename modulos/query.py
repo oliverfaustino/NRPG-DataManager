@@ -5,6 +5,7 @@ from sistemas_rpg.invo import *
 from sistemas_rpg.base import *
 from sistemas_rpg.ficha import *
 from sistemas_rpg.cla import *
+from sistemas_rpg.invo import * 
 from modulos.info import *
 
 # modulos do programa #
@@ -178,7 +179,7 @@ def query_atualizacoes():
 
             "1" para atualizações em Player
             "2" para atualizações em Personagens
-
+            "3" para atualizações em NPC's
 R: '''))
 
             if query_atualizacoes == 0:
@@ -193,6 +194,9 @@ R: '''))
                 confirmacao = True
                 query_atualizacoes_pp()
 
+            elif query_atualizacoes == 3:
+                confirmacao = True
+                query_atualizacoes_npc()
             else:
                 print('\nO valor não corresponde. Tente novamente')
 
@@ -204,7 +208,6 @@ R: '''))
 
 
 def query_atualizacoes_player():
-    
     return
 
 
@@ -225,34 +228,44 @@ def query_atualizacoes_pp():
             "4" para mostrar os Clãs
             "5" para mostrar a Ficha de Criação
 
+            "6" para mostrar todos
 R: '''))
             if query_atualizacoes_pp == 0:
                 confirmacao = True
                 query_atualizacoes()
 
             elif query_atualizacoes_pp == 1: # Digite 1 para mostrar os Nomes ocupados;
-                confirmacao = True
                 select('select nome FROM pp ORDER BY nome ASC;')
 
             elif query_atualizacoes_pp == 2: # Digite 2 para mostrar as Aparências ocupadas;
-                confirmacao = True
                 select('select aparencia FROM pp ORDER BY aparencia ASC;')
 
             elif query_atualizacoes_pp == 3: # mostrar as Bases
-                confirmacao = True          
                 print(sistema_base)
                 copiar(sistema_base)
 
-            elif query_atualizacoes_pp == 4: # mostrar os Clãs ocupados;
-                confirmacao = True             
+            elif query_atualizacoes_pp == 4: # mostrar os Clãs ocupados;             
                 print(sistema_cla)
                 copiar(sistema_cla)
 
             elif query_atualizacoes_pp == 5: # mostrar a Ficha de Criação.
-                confirmacao = True
                 print(sistema_ficha)
                 copiar(sistema_ficha)
-                            
+
+            elif query_atualizacoes_pp == 6:  #para mostrar todos  
+                select('select nome FROM pp ORDER BY nome ASC;')
+                
+                select('select aparencia FROM pp ORDER BY aparencia ASC;')
+                
+                print(sistema_base)
+                copiar(sistema_base)
+                
+                print(sistema_cla)
+                copiar(sistema_cla)                
+                
+                print(sistema_ficha)
+                copiar(sistema_ficha)
+
             else:
                 print('\nO valor não corresponde. Tente novamente')
 
@@ -260,6 +273,38 @@ R: '''))
             print('\nO valor não corresponde. Tente novamente')
               
     return
+
+
+
+def query_atualizacoes_npc():
+    confirmacao = False 
+    while confirmacao == False:  
+        try:
+            query_atualizacoes_npc = int(input('''
+    ---- ---- >> Atualizações << ---- ----
+        
+        ["0" para voltar]
+        
+        NPC's:
+            "1" para mostrar as Armas
+            "2" para mostrar as invos
+
+R: '''))
+            if query_atualizacoes_npc == 0: # para voltar
+                confirmacao = True
+                query_atualizacoes()
+
+            elif query_atualizacoes_npc == 1: # para mostrar as Armas
+                print('oi')
+
+            elif query_atualizacoes_npc == 2: # para mostrar as invos
+                print(sistema_invo)
+                copiar(sistema_invo)
+
+        except ValueError:
+            print('\nO valor não corresponde. Tente novamente')
+
+
 
 def query_buscas():
     confirmacao = False
@@ -300,6 +345,8 @@ R:'''))
             print('\nO valor não corresponde. Tente novamente')
     return
 
+
+
 def query_buscas_player():
     confirmacao = False
     while confirmacao == False:
@@ -339,6 +386,8 @@ R:'''))
 
         except ValueError:
             print('\nO valor não corresponde. Tente novamente')
+
+
 
 def query_buscas_pp():
     confirmacao = False
