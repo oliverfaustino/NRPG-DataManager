@@ -2,6 +2,9 @@ import pyperclip
 import pandas as pd
 
 from modulos.conecao import *
+
+
+
 def copiar(objeto): # função para copiar os objetos para área de transferência
     global copiar # para resolver o porblema UnboundLocalError: local variable 'copiar' referenced before assignment:
     opcao = int(input('Deseja copiar para área de transferência? "1" para sim e qualquer tecla para não\n\nR: '))                  
