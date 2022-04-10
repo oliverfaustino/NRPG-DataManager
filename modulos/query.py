@@ -5,13 +5,15 @@ from sistemas_rpg.invo import *
 from sistemas_rpg.base import *
 from sistemas_rpg.ficha import *
 from sistemas_rpg.cla import *
-from sistemas_rpg.invo import * 
+from sistemas_rpg.invo import *
+from modulos.sistemas import *
 from modulos.info import *
 
 # modulos do programa #
 from modulos.utils import *
 from modulos.adder import *
 from modulos.updater import *
+from modulos.remover import *
 
 def query():
     confirmacao = False 
@@ -133,6 +135,7 @@ R: '''))
             if query_remocoes == 0:
                 confirmacao = True
                 query()
+
             elif query_remocoes == 1:
                 confirmacao = True
                 query_remocoes_player()
@@ -155,12 +158,18 @@ def query_remocoes_player():
 ----- ------ >> Remoções << ------ -----
         
         ["0" para voltar]                                
-
+        
+        Player:
+            "1" para remover um player
 R: '''))
             if query_remocoes_player == 0:
                 confirmacao = True
                 query_remocoes() 
-
+            elif query_remocoes_player == 1:
+                confirmacao = True
+                remove_player()
+            else:
+                print('\nO valor não corresponde. Tente novamente')
         except ValueError:
             print('\nO valor não corresponde. Tente novamente')
     return
@@ -208,6 +217,26 @@ R: '''))
 
 
 def query_atualizacoes_player():
+    confirmacao = False 
+    while confirmacao == False:  
+        try:
+            query_atualizacoes_player = int(input('''
+    ---- ---- >> Atualizações << ---- ----
+        
+        ["0" para voltar]
+        
+        Players:
+            "1" para mostrar os Check In
+R: '''))
+            if query_atualizacoes_player == 0:
+                confirmacao = True
+                query_atualizacoes()
+            elif query_atualizacoes_player == 1:
+                confirmacao = True
+                sistema_check_in()
+                
+        except:
+               print('\nO valor não corresponde. Tente novamente')     
     return
 
 
@@ -235,10 +264,10 @@ R: '''))
                 query_atualizacoes()
 
             elif query_atualizacoes_pp == 1: # Digite 1 para mostrar os Nomes ocupados;
-                select('select nome FROM pp ORDER BY nome ASC;')
+                sistema_nome()
 
             elif query_atualizacoes_pp == 2: # Digite 2 para mostrar as Aparências ocupadas;
-                select('select aparencia FROM pp ORDER BY aparencia ASC;')
+                sistema_aparencia()
 
             elif query_atualizacoes_pp == 3: # mostrar as Bases
                 print(sistema_base)
@@ -253,9 +282,10 @@ R: '''))
                 copiar(sistema_ficha)
 
             elif query_atualizacoes_pp == 6:  #para mostrar todos  
-                select('select nome FROM pp ORDER BY nome ASC;')
                 
-                select('select aparencia FROM pp ORDER BY aparencia ASC;')
+                sistema_nome()
+                
+                sistema_aparencia()
                 
                 print(sistema_base)
                 copiar(sistema_base)
