@@ -29,18 +29,16 @@ def update_cla(nome, limite):
 
 
 # atualizar as bases
-def update_base(nome, limite):
+def update_base(nome, limite):    
     base_lista = str(pd.read_sql_query('SELECT base FROM pp;', con=engine))
     conta = base_lista.count(nome)
-    
-    if conta > limite:
-        print('Base lotada.')
-        base = f'{nome} (LIMITE ULTRAPASSADO!!! /{limite})'
-        
-    else:
-        base = f'{nome} ({conta}/{limite})'
-    
-    return base
+    if conta != 0:
+        if conta > limite:
+            print('Base lotada.')
+            base = f'『❌』> {nome} (LIMITE ULTRAPASSADO!!! /{limite})'
+        else:
+            base = f'『❌』> {nome} ({conta}/{limite})'        
+        return base
 
 
 
