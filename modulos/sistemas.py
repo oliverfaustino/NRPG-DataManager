@@ -21,7 +21,7 @@ def sistema_aparencia(): # função para mostrar junto ao sistema as aparências
 
           Como devem saber, o RPG é de criação, onde fazemos do 0 nossos personagens. Nisso vem as aparências personalizadas. As aparências, são simplesmente o visual que escolhemos para nossos personagens. Ser aparência do madara, te dá apenas aquele visual e não seus poderes! Seja coerente nas escolhas, pois determinados clãs têm uma característica única de aparência, respeite-as! Abaixo estará listado os aparências ocupadas:
 
-{select('select aparencia FROM pp ORDER BY aparencia ASC;')}'''
+{select('select id_pp, nome as nome_do_personagem, aparencia as aparência_em_uso FROM pp ORDER BY aparencia ASC;')}'''
     print(sistema_aparencia)
     copiar(sistema_aparencia)
     return
@@ -37,7 +37,27 @@ def sistema_check_in(): # função para mostrar junto ao sistema o check in de c
     copiar(sistema_check_in)
     return
 
+def sistema_patentes(): # função parar mostrar junto ao sistema a patente de cada peronagem
+    sistema_patentes = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ P̶a̶t̶e̶n̶t̶e̶s̶ ° -🚻』
+    →: O que é "Patente"?
 
+          Cada personagem evolui de acordo com o seu esforço, as vezes por sorte... A patente não define o quão forte você é. Veja abaixou os personagems e suas patentes (se alguma estiver errada, tratar com os adms para futura atualização):
+{select('select pp.id_pp, pp.nome, p.nome as patente from pp, patente p where pp.id_patente = p.id_patente order by pp.id_pp asc')}          
+'''
+    print(sistema_patentes)
+    copiar(sistema_patentes)
+    return
+
+def sistema_elementos(): # função parar mostrar junto ao sistema o elkemento de cada peronagem
+        sistema_elementos = f'''🚻- °  S̶i̶s̶t̶e̶m̶a̶ d̶e̶ E̶l̶e̶m̶e̶n̶t̶o̶s̶ ° -🚻』
+    →: O que é "Elemento"?
+
+          Assim como no anime, os elementos simplesmente é a transformação da natureza que seu personagem domina. A cada patente ganha-se 1 novo elemento (contabilizado apenas de chunnin para frente. Virar gennin não dá um elemento novo.) Veja abaixou os personagems e seus elementos (se algum estiver errado, tratar com os adms para futura atualização):
+{select('select pp.id_pp, pp.nome, e1.nome as elemento_1, e2.nome as e_2, e3.nome e_3, e4.nome e_4, e5.nome e_5 from pp inner join elemento as e1 on pp.id_elemento_1 = e1.id_elemento inner join elemento as e2 on pp.id_elemento_2 = e2.id_elemento inner join elemento as e3 on pp.id_elemento_3 = e3.id_elemento inner join elemento as e4 on pp.id_elemento_4 = e4.id_elemento inner join elemento as e5 on pp.id_elemento_5 = e5.id_elemento order by pp.id_pp asc')}          
+'''
+        print(sistema_elementos)
+        copiar(sistema_elementos)
+        return
 
 def ficha():
     ficha = print('''
