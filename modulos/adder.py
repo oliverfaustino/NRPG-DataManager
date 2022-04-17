@@ -1,11 +1,47 @@
 import pandas as pd
 import phonenumbers
+import math
 
 from modulos.utils import *
 from modulos.conecao import *
 
 
 
+# atualizar check_in
+def add_check_in():
+    print(select('select id_player, nome, check_in from player order by check_in desc'))
+    confirmacao = False
+    while confirmacao == False:
+            id_player = int(input('Digite o Id do player: '))
+            novo_check_in = float(input('Digite os pontos ganhos: '))
+            check_in_player = str(select(f'select check_in from player where id_player = {id_player}')).replace('check_in', '')
+
+            antigo_check_in = float(check_in_player)
+
+            check_in = round(novo_check_in + antigo_check_in,2)
+            print(f'\nO novo valor de Check In: {novo_check_in} + {antigo_check_in} = {check_in}')
+
+            sql = f'UPDATE player SET check_in = {check_in} WHERE id_player = {id_player}'
+            confirmacao_1 = str(input(f'''\nConfirmação dos valores:
+    
+    {sql} 
+
+está correto? 1 para "sim" e qualquer valor para "não". '''))
+            
+            if confirmacao_1 == '1':
+                confirmacao = True
+            
+                try:
+                    pd.read_sql_query(sql, con=engine)
+
+                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_check_in == "1":
+                        add_check_in()
+                except:
+                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_check_in == "1":
+                        add_check_in()
+    return
 
 def add_arma():
     confirmacao = False
