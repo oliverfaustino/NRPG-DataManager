@@ -105,7 +105,7 @@ R: '''))
                     
             elif query_adicoes == 5:
                 confirmacao = True
-                update_check_in()
+                add_check_in()
                         
             else:
                 print('\nO valor não corresponde. Tente novamente')
@@ -257,7 +257,10 @@ def query_atualizacoes_pp():
             "4" para mostrar os Clãs
             "5" para mostrar a Ficha de Criação
 
-            "6" para mostrar todos
+            "6" para mostrar todos acima
+
+            "7" para mostrar as Patentes
+            "8" para mostrar os Elementos
 R: '''))
             if query_atualizacoes_pp == 0:
                 confirmacao = True
@@ -295,6 +298,14 @@ R: '''))
                 
                 print(sistema_ficha)
                 copiar(sistema_ficha)
+
+            elif query_atualizacoes_pp == 7: # para mostrar as Patentes
+                sistema_patentes()
+            
+            elif query_atualizacoes_pp == 8: # mostrar os Elementos
+                sistema_elementos()
+            
+        
 
             else:
                 print('\nO valor não corresponde. Tente novamente')
