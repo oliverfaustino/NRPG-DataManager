@@ -171,6 +171,7 @@ def add_pp(p_add_player = 0, p_id_player = 0):
     
     
     else:
+        print('\nPersonagens Existentes:')
         print(select('select id_player, nome from player order by id_player asc'))
         print('\nSobre o Personagem à ser registrado')
         id_pp = float(input('Id do personagem: '))
