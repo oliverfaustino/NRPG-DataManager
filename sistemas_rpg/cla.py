@@ -414,4 +414,4 @@ grupo = '''● ━━━━━━━
     Tem: Auto-Controle
     ● ━━━━━━━ '''.format(update_cla('Jashinista', 5), update_cla('Samurai', 5), update_cla('Nokizaru', 5))
 
-sistema_cla = cla + familia + grupo
+

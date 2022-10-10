@@ -30,7 +30,7 @@ def update_cla(nome, limite):
 
 # atualizar as bases
 def update_base(nome, limite):    
-    base_lista = str(pd.read_sql_query('SELECT base FROM pp;', con=engine))
+    base_lista = str(pd.read_sql_query('SELECT base_1, base_2, base_3 FROM pp;', con=engine))
     conta = base_lista.count(nome)
     if conta != 0:
         if conta > limite:

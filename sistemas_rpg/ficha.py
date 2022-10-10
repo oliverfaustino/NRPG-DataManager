@@ -1,4 +1,4 @@
-sistema_ficha ='''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m̶ { ° -🗃️』
+ficha ='''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m̶ R̶e̶v̶o̶l̶u̶t̶i̶o̶n̶ { ° -🗃️』
    
         →: Identificação do Player
     ╘ N̶o̶m̶e̶ o̶u̶ N̶i̶c̶k̶ ↝: 
@@ -10,12 +10,12 @@ sistema_ficha ='''『🗃️- ° } F̶i̶c̶h̶a̶ P̶e̶r̶s̶o̶n̶a̶g̶e̶m�
     ╘ A̶p̶a̶r̶ê̶n̶c̶i̶a̶ ↝:
     ╘ I̶d̶a̶d̶e̶ (̶A̶t̶é̶ 1̶3̶)̶ ↝:  
     ╘ S̶e̶x̶o̶ ↝: 
-    ╘ T̶i̶p̶o̶ S̶a̶n̶g̶u̶í̶n̶e̶o̶ ↝: use o comando /rollsangue 
+    ╘ T̶i̶p̶o̶ S̶a̶n̶g̶u̶í̶n̶e̶o̶ ↝: ~use o comando /rollsangue e depois coloque aqui~
 
         →: Dados 
-    ╘ B̶a̶s̶e̶ (̶S̶ó̶ 1̶)̶ ↝:
-    ╘ C̶l̶ã̶ (̶A̶t̶é̶ 2)̶ ↝: 
-    ╘ E̶l̶e̶m̶e̶n̶t̶o̶ I̶n̶i̶c̶i̶a̶s̶(̶S̶ó̶ 1̶)̶ ↝:
+    ╘ B̶a̶s̶e̶(̶s̶)̶ ↝:
+    ╘ C̶l̶ã̶(̶s̶)̶ ↝: 
+    ╘ E̶l̶e̶m̶e̶n̶t̶o̶ I̶n̶i̶c̶i̶a̶l̶(̶S̶ó̶ 1̶)̶ ↝:
     ╘ ̶S̶h̶i̶n̶o̶b̶i / ̶N̶u̶k̶k̶e̶n̶i̶n / A̶n̶d̶a̶r̶i̶l̶h̶o̶ ↝: 
     ╘ D̶a̶t̶a̶ d̶e̶ C̶r̶i̶a̶ç̶ã̶o̶ ↝:
 
