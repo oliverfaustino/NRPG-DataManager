@@ -1,6 +1,4 @@
 import pandas as pd
-import phonenumbers
-import math
 
 from modulos.utils import *
 from modulos.conecao import *
@@ -14,160 +12,27 @@ query.py
 """
 #######################################################################
 
-# adicionar pontos de check_in
-def add_check_in():
-    confirmacao = False
-    while confirmacao == False:
-            #printa primeiramente o check de todos os players para depois dar as opções de adição
-            print(select('select id_player, nome, check_in from player order by check_in desc'))
-            id_player = int(input('Digite o Id do player: '))
-            novo_check_in = float(input('Digite os pontos ganhos: '))
-            check_in_player = str(select(f'select check_in from player where id_player = {id_player}')).replace('check_in', '')
+"""PLAYERS"""
 
-            antigo_check_in = float(check_in_player)
-
-            check_in = round(novo_check_in + antigo_check_in,2)
-            print(f'\nO novo valor de Check In: {novo_check_in} + {antigo_check_in} = {check_in}')
-
-            sql = f'UPDATE player SET check_in = {check_in} WHERE id_player = {id_player}'
-            confirmacao_1 = str(input(f'''\nConfirmação dos valores:
-    
-    {sql} 
-
-está correto? 1 para "sim" e qualquer valor para "não". '''))
-            
-            if confirmacao_1 == '1':
-                confirmacao = True
-            
-                try:
-                    pd.read_sql_query(sql, con=engine)
-
-                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
-                    if confirmacao_add_new_check_in == "1":
-                        add_check_in()
-                except:
-                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
-                    if confirmacao_add_new_check_in == "1":
-                        add_check_in()
-    return
-
-# adiciona um novo usuário a uma arma
-def add_arma():
-    confirmacao = False
-    while confirmacao == False:
-        #print(select('select * from arma where id_arma < 40'))
-        print(select('select * from arma order by id_arma asc'))
-        print('\nSOBRE O PERSONAGEM A SER DADO A ARMA:')
-        id_arma = float(input('Digite o ID da arma: '))
-        select('Select id_pp, nome from pp')
-        id_pp = float(input('Digite o id do pp: '))
-        sql = f"update arma set id_pp = {id_pp} where id_arma = {id_arma}"
-        
-        try:
-            confirmacao_1 = int(input(f'''Confirmação dos valores:
- 
-{sql} 
-
-está correto? 1 para "sim" 0 para "não". '''))
-            if confirmacao_1 == 1:
-                confirmacao = True
-                try:
-                    pd.read_sql_query(sql, con=engine)
-                    break
-                finally:
-                    break
-
-            elif confirmacao_1 == 0:
-                 confirmacao = False
-            else:
-                 confirmacao = False                             
-        except ValueError:
-            print('O valor não corresponde. Tente novamente')
-    return sql
-
-# adicionar um player numa invo
-def add_invo():
-    confirmacao = False
-    while confirmacao == False:
-        
-        print(select('Select * from invo order by id_invo asc')) # select para mostrar as invos, seus id e dono
-        print('\nSOBRE O iNVOCADOR A SER REGISTRADO:')
-        id_invo = int(input('Digite o ID da invo: '))
-        select('Select id_pp, nome from pp')
-        id_pp = float(input('Digite o id do pp: ')) 
-        sql = f"update invo set id_pp = {id_pp} where id_invo = {id_invo}"
-        try:
-            confirmacao_1 = int(input(f'''Confirmação dos valores:
- 
-{sql} 
-
-está correto? 1 para "sim" 0 para "não". '''))
-            if confirmacao_1 == 1:
-                confirmacao = True
-                try:
-                    pd.read_sql_query(sql, con=engine)
-                    break
-                finally:
-                    break
-
-            elif confirmacao_1 == 0:
-                 confirmacao = False
-            else:
-                 confirmacao = False                             
-        except ValueError:
-            print('O valor não corresponde. Tente novamente')
-    return sql
-
-# adicionar um jinchuuriki
-def add_bijuu():
-    confirmacao = False
-    while confirmacao == False:
-        
-        print(select('Select * from bijuu order by id_bijuu asc')) # select para mostrar as bijuu, seus id e jinchuriki
-        print('\nSOBRE O JINCHURIKI A SER REGISTRADO:')
-        id_bijuu = int(input('Digite o ID da Bijuu: '))
-        select('Select id_pp, nome from pp')
-        id_pp = float(input('Digite o id do pp: ')) 
-        sql = f"update bijuu set id_pp = {id_pp} where id_bijuu = {id_bijuu}"
-        try:
-            confirmacao_1 = int(input(f'''Confirmação dos valores:
- 
-{sql} 
-
-está correto? 1 para "sim" 0 para "não". '''))
-            if confirmacao_1 == 1:
-                confirmacao = True
-                try:
-                    pd.read_sql_query(sql, con=engine)
-                    break
-                finally:
-                    break
-
-            elif confirmacao_1 == 0:
-                 confirmacao = False
-            else:
-                 confirmacao = False                             
-        except ValueError:
-            print('O valor não corresponde. Tente novamente')
-    return sql
-
-#adiciona um novo player
 def add_player():
     confirmacao = False
     while confirmacao == False:
+        
         print(select('select id_player, nome from player order by id_player asc'))
+
         print('\nSOBRE O PLAYER A SER REGISTRADO:')
         id_player = int(input('Id: '))
         nome = str(input('Nome: '))
         numero = str(input('Número: '))
         recrutador = int(input('Recrutado por: '))
         check_in = 0
+        status = 'off'
         
         #formatar o número do player
         #numero_ajustado = phonenumbers.parse(numero, "BB")
         sql = f'''INSERT INTO player(
-            id_player, nome, numero, recrutador, check_in)
-    VALUES ({id_player}, '{nome}', '{numero}', {recrutador}, {check_in});
+            id_player, nome, numero, recrutador, check_in, status)
+    VALUES ({id_player}, '{nome}', '{numero}', {recrutador}, {check_in}, '{status}');
 '''
         try:
             confirmacao_1 = int(input(f'''Confirmação dos valores:
@@ -197,7 +62,204 @@ está correto? 1 para "sim" 0 para "não". '''))
             print('O valor não corresponde. Tente novamente')
     return sql
 
-#INSERT INTO pp
+def add_check_in():
+    confirmacao = False
+    while confirmacao == False:
+            #printa primeiramente o check de todos os players para depois dar as opções de adição
+            print(select('select id_player, nome, check_in from player order by check_in desc, id_player asc'))
+            id_player = int(input('Digite o Id do player: '))
+            novo_check_in = float(input('Digite os pontos ganhos: '))
+            check_in_player = str(select(f'select check_in from player where id_player = {id_player}')).replace('check_in', '')
+
+            antigo_check_in = float(check_in_player)
+
+            check_in = round(novo_check_in + antigo_check_in,2)
+            print(f'\nO novo valor de Check In: {novo_check_in} + {antigo_check_in} = {check_in}')
+
+            sql = f"update player set status = 'on' where id_player = {id_player}; UPDATE player SET check_in = {check_in} WHERE id_player = {id_player}"
+            confirmacao_1 = str(input(f'''\nConfirmação dos valores:
+    
+    {sql} 
+
+está correto? 1 para "sim" e qualquer valor para "não". '''))
+            
+            if confirmacao_1 == '1':
+                confirmacao = True
+
+                try:
+                    
+                    pd.read_sql_query(sql, con=engine)
+
+                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_check_in == "1":
+                        add_check_in()
+                except:
+                    confirmacao_add_new_check_in = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_check_in == "1":
+                        add_check_in()
+    return
+
+
+"""ITENS"""
+
+def add_arma():
+    confirmacao = False
+    while confirmacao == False:
+
+        print('\n LISTA DE PERSONAGEMS')
+        print(select('Select id_pp, nome from pp order by id_pp asc')) # select para os personagems
+
+        print('\n LISTA DE ARMAS')
+        #print(select('select * from arma where id_arma < 40'))
+        print(select('select * from arma order by id_arma asc')
+        )
+        print('\nSOBRE O PERSONAGEM A SER DADO A ARMA:')
+        id_arma = float(input('Digite o ID da arma: '))
+        select('Select id_pp, nome from pp')
+        id_pp = float(input('Digite o id do pp: '))
+        sql = f"update arma set id_pp = {id_pp} where id_arma = {id_arma}"
+        
+        try:
+            confirmacao_1 = int(input(f'''Confirmação dos valores:
+ 
+{sql} 
+
+está correto? 1 para "sim" 0 para "não". '''))
+            if confirmacao_1 == 1:
+                confirmacao = True
+                try:
+                    pd.read_sql_query(sql, con=engine)
+                    break
+                finally:
+                    break
+
+            elif confirmacao_1 == 0:
+                 confirmacao = False
+            else:
+                 confirmacao = False                             
+        except ValueError:
+            print('O valor não corresponde. Tente novamente')
+    return sql
+
+
+"""NPCS"""
+
+def add_invo():
+    confirmacao = False
+    while confirmacao == False:
+
+        print('\n LISTA DE PERSONAGEMS')
+        print(select('Select id_pp, nome from pp order by id_pp asc')) # select para os personagems
+
+        print('\n LISTA DE INVOCAÇÕES')
+        print(select('Select * from invo order by id_invo asc')) # select para mostrar as invos, seus id e dono
+
+        print('\nSOBRE O iNVOCADOR A SER REGISTRADO:')
+        id_invo = int(input('Digite o ID da invo: '))
+        select('Select id_pp, nome from pp')
+        id_pp = float(input('Digite o id do pp: ')) 
+        sql = f"update invo set id_pp = {id_pp} where id_invo = {id_invo}"
+        try:
+            confirmacao_1 = int(input(f'''Confirmação dos valores:
+ 
+{sql} 
+
+está correto? 1 para "sim" 0 para "não". '''))
+            if confirmacao_1 == 1:
+                confirmacao = True
+                try:
+                    pd.read_sql_query(sql, con=engine)
+                    break
+                finally:
+                    break
+
+            elif confirmacao_1 == 0:
+                 confirmacao = False
+            else:
+                 confirmacao = False                             
+        except ValueError:
+            print('O valor não corresponde. Tente novamente')
+    return sql
+
+
+def add_bijuu():
+    confirmacao = False
+    while confirmacao == False:
+
+        print('\n LISTA DE PERSONAGEMS')
+        print(select('Select id_pp, nome from pp order by id_pp asc')) # select para os personagems
+
+        print('\n LISTA DE BIJUUS')
+        print(select('Select * from bijuu order by id_bijuu asc')) # select para mostrar as bijuu, seus id e jinchuriki
+
+        print('\nSOBRE O JINCHURIKI A SER REGISTRADO:')
+        id_bijuu = int(input('Digite o ID da Bijuu: '))
+        select('Select id_pp, nome from pp')
+        id_pp = float(input('Digite o id do pp: ')) 
+        sql = f"update bijuu set id_pp = {id_pp} where id_bijuu = {id_bijuu}"
+        try:
+            confirmacao_1 = int(input(f'''Confirmação dos valores:
+ 
+{sql} 
+
+está correto? 1 para "sim" 0 para "não". '''))
+            if confirmacao_1 == 1:
+                confirmacao = True
+                try:
+                    pd.read_sql_query(sql, con=engine)
+                    break
+                finally:
+                    break
+
+            elif confirmacao_1 == 0:
+                 confirmacao = False
+            else:
+                 confirmacao = False                             
+        except ValueError:
+            print('O valor não corresponde. Tente novamente')
+    return sql
+
+
+def add_reen():
+    confirmacao = False
+    while confirmacao == False:
+
+        print('\n LISTA DE PERSONAGEMS')
+        print(select('Select id_pp, nome from pp order by id_pp asc')) # select para os personagems
+
+        print('\n LISTA DE REENCARNAÇÕES')
+        print(select('Select * from reen order by id_reen asc')) # select para mostrar as reencarnação, seus id e seus reencarnados
+
+        print('\nSOBRE O REENCARNADO A SER REGISTRADO:')
+        id_reen = int(input('Digite o ID da Reencarnação: '))
+        select('Select id_pp, nome from pp')
+        id_pp = float(input('Digite o id do pp: ')) 
+        sql = f"update reen set id_pp = {id_pp} where id_reen = {id_reen}"
+        try:
+            confirmacao_1 = int(input(f'''Confirmação dos valores:
+ 
+{sql} 
+
+está correto? 1 para "sim" 0 para "não". '''))
+            if confirmacao_1 == 1:
+                confirmacao = True
+                try:
+                    pd.read_sql_query(sql, con=engine)
+                    break
+                finally:
+                    break
+
+            elif confirmacao_1 == 0:
+                 confirmacao = False
+            else:
+                 confirmacao = False                             
+        except ValueError:
+            print('O valor não corresponde. Tente novamente')
+    return sql
+
+
+"""PERSONAGEM"""
+
 def add_pp(p_add_player = 0, p_id_player = 0):
     
     # lê os parâmetros de add_player (parâmetro q é ativado quando se confirma adicionar um personagem ao player registrado no add_player) e transforma o parâmetro recebido como p_id_player no id do player, óbvio, dono do personagem e como. Dentro do banco de dados o id de um personagem é a junção do id do seu dono antes do ponto e depois do ponto é correspondente ao número de personagens possuído. Se o player é Id 1 e esse é o seu primeiro / único personagem, logo, o id do personagem é 1.1
@@ -279,14 +341,7 @@ def add_pp(p_add_player = 0, p_id_player = 0):
     3 = Nukkenin.
 '''))
         
-        id_patente = int(input('''Patente:
-    1 = Acadêmico / Rank E
-    2 = Gennin / Rank D
-    3 = Chunnin / Rank C
-    4 = Jounnin / Rank B
-    5 = Jounnin Rank A
-    6 = Jounnin Rank S
-''')) 
+        id_patente = 1
 
         id_elemento_1 = int(input('''1° Elemento:
         1 = Katon
@@ -388,8 +443,8 @@ def add_pp(p_add_player = 0, p_id_player = 0):
                 id_pp, id_player, nome, aparencia, sangue, base_1, base_2, base_3, cla_1, cla_2, cla_3, 
                 id_afiliacao, id_patente, id_elemento_1, id_elemento_2,
                 data_criacao, id_hiden_1, id_hiden_2, id_hiden_3,
-                id_kkg_1, id_kkg_2, id_kkg_3)
-        VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base_1}', '{base_2}', '{base_3}', '{cla_1}', '{cla_2}','{cla_3}', {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3});'''
+                id_kkg_1, id_kkg_2, id_kkg_3, pontos_missao)
+        VALUES ({id_pp}, {id_player}, '{nome}', '{aparencia}', '{sangue}', '{base_1}', '{base_2}', '{base_3}', '{cla_1}', '{cla_2}','{cla_3}', {id_afiliacao}, {id_patente}, {id_elemento_1}, {id_elemento_2}, '{data_criacao}', {id_hiden_1}, {id_hiden_2}, {id_hiden_3}, {id_kkg_1}, {id_kkg_2}, {id_kkg_3}, 0);'''
                 
         confirmacao_1 = input(f'''\nConfirmação dos valores:
     
@@ -405,3 +460,38 @@ def add_pp(p_add_player = 0, p_id_player = 0):
             #confirmacao = True
     return sql
 
+def add_pontos_missao():
+    confirmacao = False
+    while confirmacao == False:
+            #printa primeiramente os pontos de todos os players para depois dar as opções de adição
+            print(select(' select id_pp, nome, pontos_missao from pp order by pontos_missao  desc, id_pp asc'))
+            id_pp = float(input('Digite o Id do personagem: '))
+            novo_pontos_missao = int(input('Digite os pontos ganhos: '))
+            pontos_missao_pp = str(select(f'select pontos_missao from pp where id_pp = {id_pp}')).replace('pontos_missao', '')
+
+            antigo_pontos_missao = int(pontos_missao_pp)
+
+            pontos_missao = novo_pontos_missao + antigo_pontos_missao
+            print(f'\nO novo valor de Pontos de Missão: {novo_pontos_missao} + {antigo_pontos_missao} = {pontos_missao}')
+
+            sql = f'UPDATE pp SET pontos_missao = {pontos_missao} WHERE id_pp = {id_pp}'
+            confirmacao_1 = str(input(f'''\nConfirmação dos valores:
+    
+    {sql} 
+
+está correto? 1 para "sim" e qualquer valor para "não". '''))
+            
+            if confirmacao_1 == '1':
+                confirmacao = True
+            
+                try:
+                    pd.read_sql_query(sql, con=engine)
+
+                    confirmacao_add_new_pontos_missao = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_pontos_missao == "1":
+                        add_pontos_missao()
+                except:
+                    confirmacao_add_new_pontos_missao = str(input('\nDeseja adicionar mais pontos? 1 para "sim" e qualquer tecla para "não": '))
+                    if confirmacao_add_new_pontos_missao == "1":
+                        add_pontos_missao()
+    return
