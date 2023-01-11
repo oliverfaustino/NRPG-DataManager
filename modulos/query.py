@@ -1,19 +1,11 @@
-#######################################################################
-""" 
-query.py é o módulo principal após o main (NRPG-DataManager.py) Sendo ele
-quem ficará em looping para saber as ações que o usuário deseja fazer, até
-não haver mais coisas a mexer.
-De acordo com os pedidos do player, o query.py irá chamar outros módulos
-que farão o desejado.
-"""
-#######################################################################
-
 import sys
 
 # sistemas do rpg #
+from sistemas_rpg.invo import *
+from sistemas_rpg.base import *
 from sistemas_rpg.ficha import *
-from sistemas_rpg.id import *
-from sistemas_rpg.tres_fatorial import *
+from sistemas_rpg.cla import *
+from sistemas_rpg.invo import *
 from modulos.sistemas import *
 from modulos.info import *
 
@@ -23,53 +15,46 @@ from modulos.adder import *
 from modulos.updater import *
 from modulos.remover import *
 
-
-# função inicial. Responsável por saber o primeiro interesse do usuário, seja adicionar
-# remover, buscar ou atualizar informações
 def query():
     confirmacao = False 
     while confirmacao == False:
         try:
             query = int(input(f'''
 ----- ----- >> Sistema << ------ -----
-    "0" para fechar o Programa
+
+    "0" para fechar o programa
 
 ----- ------ >> Adições << ------ -----
-    "1" para opções de Adições
+    "1" para opções de adições
 
 ----- ------ >> Remoções << ------ -----
-    "2" para opções de Remoções
+    "2" para opções de remoção
 
 ---- ---- >> Atualizações << ---- ----
-    "3" para opções de Atualizações
+    "3" para opções de atualizações
 
 ------ ------ >> Buscas << ------ ------
-    "4" para opções de Buscas (EM DESENVOLVIMENTO)
+    "4" para opções de buscas
 
 R: '''))
 
             if query == 0:
-                # encerra o programa.
                 sys.exit('\nConexão encerrada!')
 
             elif query == 1:
                 confirmacao = True
-                #chama o módulo responsável pelas adições
                 query_adicoes()
 
             elif query == 2:
                 confirmacao = True
-                #chama o módulo responsável pelas remoções
                 query_remocoes()  
 
             elif query == 3:
                 confirmacao = True
-                #chama o módulo responsável pelas atualizações
                 query_atualizacoes()    
 
             elif query == 4:
                 confirmacao = True
-                # chama o módulo responsável pelas atualizações
                 query_buscas()
 
             else:
@@ -80,30 +65,22 @@ R: '''))
     return query
 
 
-# Aprofundamento da aba de adições. Responsável por saber o real interesse do usuário em adições
-# add um novo player, um usuário para arma, etc
+
 def query_adicoes():
     confirmacao = False 
     while confirmacao == False:
-        try:
+
+        try: # try que formulará as query sobre as adições de informações
             query_adicoes = int(input('''
 ----- ------ >> Adições << ------ -----
         
         ["0" para voltar]
 
-NPCS e ITENS:
-        "1" para adicionar <um> Usuário (arma)
-        "2" para adicionar <um> Jinchuriki (bijuu)
-        "3" para adicionar <um> Invocador (invo)
-        "4" para adicionar <uma> Reencarnação (reen)
-
-PLAYERS E PERSONAGENS:
-        "5" para adicionar <um> novo Player
-        "6" para adicionar <um> novo Personagem
-
-PONTOS E SISTEMA:
-        "7" para adicionar pontos de Check In
-        "8" para adicionar pontos de Missão
+        "1" para adicionar um usuário (arma)
+        "2" para adicionar um usuário (invo)
+        "3" para adicionar um novo Player
+        "4" para adicionar um novo Personagem
+        "5" para adicionar pontos de Check In
 
 R: '''))
             if query_adicoes == 0:
@@ -111,28 +88,24 @@ R: '''))
                 query()
 
             elif query_adicoes == 1:
+                confirmacao = True
                 add_arma()
 
             elif query_adicoes == 2:
-                add_bijuu()
-
-            elif query_adicoes == 3:
+                confirmacao = True
                 add_invo()
 
-            elif query_adicoes == 4:
-                add_reen()
-
-            elif query_adicoes == 5:
+            elif query_adicoes == 3:
+                confirmacao = True
                 add_player()
 
-            elif query_adicoes == 6:
+            elif query_adicoes == 4:
+                confirmacao = True
                 add_pp()
                     
-            elif query_adicoes == 7:
+            elif query_adicoes == 5:
+                confirmacao = True
                 add_check_in()
-                
-            elif query_adicoes == 8:
-                add_pontos_missao()
                         
             else:
                 print('\nO valor não corresponde. Tente novamente')
@@ -142,36 +115,21 @@ R: '''))
     return
 
 
-# Aprofundamento da aba de remoções. Responsável por saber o real interesse do usuário em remover
-# um novo player, um usuário para arma, etc
+
 def query_remocoes():
     confirmacao = False 
     while confirmacao == False:
         
-        try: 
+        try: # try que formulará as query sobre as atualizações de informações
             query_remocoes = int(input('''
 ----- ------ >> Remoções << ------ -----
         
         ["0" para voltar]
     
-PLAYERS E PERSONAGENS
-    Player:
-        "1" para remoção <de um> Player
-
-    Personagem
-        "2" para remoção <de um> Personagem
-
-NPCS E ITENS:
-    Armas:
-        "3" para remover <uma> usuário (arma)           
-        
-    Bijuu:
-        "4" para remover <um> Jinchuuriki
-
-    Reencarnação:
-        "5" para remover <um> Reencarnado
-        "6" para remover <uma> Reencarnação
-
+        "1" para remoção em Player
+        "2" para remoção em Personagem
+        "3" para remoção em Armas
+        "4" para remoção em Invocações
 
 R: '''))
             if query_remocoes == 0:
@@ -179,22 +137,8 @@ R: '''))
                 query()
 
             elif query_remocoes == 1:
-                remover_player()
-            
-            elif query_remocoes == 2:
-                remover_pp()
-
-            elif query_remocoes == 3:
-                remover_usuario()
-
-            elif query_remocoes == 4:
-                remover_jinchuriki()
-
-            elif query_remocoes == 5:
-                remover_reen()
-
-            elif query_remocoes == 6:
-                remover_reen()
+                confirmacao = True
+                query_remocoes_player()
             
             else:
                 print('\nO valor não corresponde. Tente novamente')
@@ -204,47 +148,47 @@ R: '''))
     return
 
 
-# Aprofundamento da aba de atualizações. Responsável por saber o real interesse do usuário em buscar atualizações
+
+def query_remocoes_player():
+    confirmacao = False 
+    while confirmacao == False:
+
+        try:
+            query_remocoes_player = int(input('''
+----- ------ >> Remoções << ------ -----
+        
+        ["0" para voltar]                                
+        
+        Player:
+            "1" para remover um player
+R: '''))
+            if query_remocoes_player == 0:
+                confirmacao = True
+                query_remocoes() 
+            elif query_remocoes_player == 1:
+                confirmacao = True
+                remove_player()
+            else:
+                print('\nO valor não corresponde. Tente novamente')
+        except ValueError:
+            print('\nO valor não corresponde. Tente novamente')
+    return
+
+
+
 def query_atualizacoes():
     confirmacao = False 
     while confirmacao == False:  
             
-        try:
+        try:  # try que formulará as query sobre as atualizações de informações
             query_atualizacoes = int(input('''
     ---- ---- >> Atualizações << ---- ----
             
             ["0" para voltar]
-PLAYERS E PERSONAGENS
-    Player:
-        "1" para atualização <de> Check In
-        "2" para mostrar os Recrutas e Recrutador
 
-    Personagem: (PARA CRIAÇÂO)
-        "3 para mostrar os Nomes
-        "4" para mostrar as Aparências
-        "5" para mostrar o Sistema 3!
-        "6" para mostrar as Bases
-        "7" para mostrar os Clãs
-        "8" para mostrar a Ficha de Criação
-
-        "9" para mostrar todos acima (Personagem)
-
-    Personagem: (PARA ORGANIZAÇÃO)
-        "10" para mostrar as Patentes
-        "11" para mostrar o sistema de Id
-
-        "12" para mostrar os Check In, ID e Patentes
-
-NPCS E ITENS:
-    NPC's:
-        "13" para mostrar as Armas
-        "14" para mostrar as invos
-        "15" para mostrar as Bijuu
-        "16" para mostrar as Reencarnações
-
-        "17" para mostrar todos acima (NPC's)
-        "18" para mostrar todos acima (NPC's e Personagem)
-
+            "1" para atualizações em Player
+            "2" para atualizações em Personagens
+            "3" para atualizações em NPC's
 R: '''))
 
             if query_atualizacoes == 0:
@@ -252,83 +196,16 @@ R: '''))
                 query()
 
             elif query_atualizacoes == 1:
-                sistema_check_in()
+                confirmacao = True
+                query_atualizacoes_player()
 
-            elif query_atualizacoes == 2: # Digite 1 para mostrar os Recrutas e Recrutador;
-                sistema_recrutamento()
+            elif query_atualizacoes == 2:
+                confirmacao = True
+                query_atualizacoes_pp()
 
-            elif query_atualizacoes == 3: # Digite 1 para mostrar os Nomes ocupados;
-                sistema_nome()
-
-            elif query_atualizacoes == 4: # Digite 2 para mostrar as Aparências ocupadas;
-                sistema_aparencia()
-
-            elif query_atualizacoes == 5: # mostrar o sistema 3!
-                print(tres_fatorial)
-                copiar(tres_fatorial)
-
-            elif query_atualizacoes == 6: # mostrar as Bases
-                sistema_base()
-
-            elif query_atualizacoes == 7: # mostrar os Clãs ocupados;             
-                sistema_cla()
-
-            elif query_atualizacoes == 8: # mostrar a Ficha de Criação.
-                print(ficha)
-                copiar(ficha)
-
-            elif query_atualizacoes == 9:  #para mostrar todos   
-                sistema_nome()
-                sistema_aparencia()
-                
-                print(tres_fatorial)
-                copiar(tres_fatorial)
-                
-                sistema_base()
-                sistema_cla()
-                
-                print(ficha)
-                copiar(ficha)
-
-            elif query_atualizacoes == 10: # para mostrar as Patentes
-                sistema_patentes()
-            
-            elif query_atualizacoes == 11: # mostrar os Check In
-                print(id)
-                copiar(id)
-
-            elif query_atualizacoes == 12: # para mostrar as Patentes e Elementos Juntos
-                sistema_patentes()
-                sistema_check_in()  
-                print(id)
-                copiar(id)
-
-            elif query_atualizacoes == 13: # para mostrar as Armas
-                sistema_arma()
-
-            elif query_atualizacoes == 14: # para mostrar as invos
-                sistema_invo()
-
-            elif query_atualizacoes == 15: # para mostrar as Bijuus
-                sistema_bijuu()
-
-            elif query_atualizacoes == 16: # para mostrar as Reencarnações
-                sistema_reen()
-
-            elif query_atualizacoes == 17: # para mostrar as COISAS DE NPCS
-                sistema_arma()
-                sistema_invo()
-                sistema_bijuu()
-                sistema_reen()
-
-            elif query_atualizacoes == 18: # para mostrar as NPCS E PERSONAGENS
-                sistema_arma()
-                sistema_invo()
-                sistema_patentes()
-                sistema_check_in()  
-                print(id)
-                copiar(id)
-
+            elif query_atualizacoes == 3:
+                confirmacao = True
+                query_atualizacoes_npc()
             else:
                 print('\nO valor não corresponde. Tente novamente')
 
@@ -336,6 +213,137 @@ R: '''))
             print('\nO valor não corresponde. Tente novamente')
             
     return
+
+
+
+def query_atualizacoes_player():
+    confirmacao = False 
+    while confirmacao == False:  
+        try:
+            query_atualizacoes_player = int(input('''
+    ---- ---- >> Atualizações << ---- ----
+        
+        ["0" para voltar]
+        
+        Players:
+            "1" para mostrar os Check In
+R: '''))
+            if query_atualizacoes_player == 0:
+                confirmacao = True
+                query_atualizacoes()
+            elif query_atualizacoes_player == 1:
+                confirmacao = True
+                sistema_check_in()
+                
+        except:
+               print('\nO valor não corresponde. Tente novamente')     
+    return
+
+
+
+def query_atualizacoes_pp():
+    confirmacao = False 
+    while confirmacao == False:  
+        try:
+            query_atualizacoes_pp = int(input('''
+    ---- ---- >> Atualizações << ---- ----
+        
+        ["0" para voltar]
+        
+        Personagem:
+            "1" para mostrar os Nomes
+            "2" para mostrar as Aparências
+            "3" para mostrar as Bases
+            "4" para mostrar os Clãs
+            "5" para mostrar a Ficha de Criação
+
+            "6" para mostrar todos acima
+
+            "7" para mostrar as Patentes
+            "8" para mostrar os Elementos
+R: '''))
+            if query_atualizacoes_pp == 0:
+                confirmacao = True
+                query_atualizacoes()
+
+            elif query_atualizacoes_pp == 1: # Digite 1 para mostrar os Nomes ocupados;
+                sistema_nome()
+
+            elif query_atualizacoes_pp == 2: # Digite 2 para mostrar as Aparências ocupadas;
+                sistema_aparencia()
+
+            elif query_atualizacoes_pp == 3: # mostrar as Bases
+                print(sistema_base)
+                copiar(sistema_base)
+
+            elif query_atualizacoes_pp == 4: # mostrar os Clãs ocupados;             
+                print(sistema_cla)
+                copiar(sistema_cla)
+
+            elif query_atualizacoes_pp == 5: # mostrar a Ficha de Criação.
+                print(sistema_ficha)
+                copiar(sistema_ficha)
+
+            elif query_atualizacoes_pp == 6:  #para mostrar todos  
+                
+                sistema_nome()
+                
+                sistema_aparencia()
+                
+                print(sistema_base)
+                copiar(sistema_base)
+                
+                print(sistema_cla)
+                copiar(sistema_cla)                
+                
+                print(sistema_ficha)
+                copiar(sistema_ficha)
+
+            elif query_atualizacoes_pp == 7: # para mostrar as Patentes
+                sistema_patentes()
+            
+            elif query_atualizacoes_pp == 8: # mostrar os Elementos
+                sistema_elementos()
+            
+        
+
+            else:
+                print('\nO valor não corresponde. Tente novamente')
+
+        except ValueError:
+            print('\nO valor não corresponde. Tente novamente')
+              
+    return
+
+
+
+def query_atualizacoes_npc():
+    confirmacao = False 
+    while confirmacao == False:  
+        try:
+            query_atualizacoes_npc = int(input('''
+    ---- ---- >> Atualizações << ---- ----
+        
+        ["0" para voltar]
+        
+        NPC's:
+            "1" para mostrar as Armas
+            "2" para mostrar as invos
+
+R: '''))
+            if query_atualizacoes_npc == 0: # para voltar
+                confirmacao = True
+                query_atualizacoes()
+
+            elif query_atualizacoes_npc == 1: # para mostrar as Armas
+                print('oi')
+
+            elif query_atualizacoes_npc == 2: # para mostrar as invos
+                print(sistema_invo)
+                copiar(sistema_invo)
+
+        except ValueError:
+            print('\nO valor não corresponde. Tente novamente')
 
 
 
