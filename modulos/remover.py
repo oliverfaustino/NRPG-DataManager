@@ -41,7 +41,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
             remover_pp(p_remover_player = 1, p_id_player = id_player)
 
             print(f'\nREMOVENDO PLAYER DE ID: {id_player}...')
-            sleep(3)
+            sleep(1)
 
             try:
                 sql = f'''update player set recrutador = 0 where recrutador = {id_player}; DELETE FROM player WHERE id_player = {id_player}'''
@@ -65,7 +65,7 @@ def remover_pp(p_remover_player = 0, p_id_player = 0):
         id_player = p_id_player
         
         print(f'\nREMOVENDO PERSONAGEM DO PLAYER DE ID: {id_player}...')
-        sleep(3)    
+        sleep(1)    
     
         try:
             sql = f'''DELETE FROM pp WHERE id_player = {id_player}'''
@@ -100,7 +100,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
                 remover_usuario(p_remover_pp = 1, p_id_pp = id_pp)
                 
                 print(f'\nREMOVENDO PERSONAGEM DO PLAYER DE ID: {id_player}...')
-                sleep(3)
+                sleep(1)
                 try:
                   
                     sql = f'''DELETE FROM pp WHERE id_pp = {id_pp}'''
@@ -140,7 +140,7 @@ def remover_usuario(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, p_i
         id_pp = p_id_pp
         
         print(f'\nREMOVENDO AS ARMAS DO PERSONAGEM DE ID: {id_pp}...')
-        sleep(3)    
+        sleep(1)    
         
         try:
             sql = f'''update arma set id_pp = 0 where id_pp = {id_pp}'''
@@ -171,7 +171,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
             if confirmacao_arma == '1':
                 confirmacao = True
                 print(f'\nREMOVENDO AS ARMAS DO PERSONAGEM DE ID: {id_pp}...')
-                sleep(3)
+                sleep(1)
                 try:
                       
 
@@ -214,7 +214,7 @@ def remover_invo(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, p_id_p
         id_pp = p_id_pp
         
         print(f'\nREMOVENDO AS INVOCAÇÕES PERSONAGEM DE ID: {id_pp}...')
-        sleep(3)    
+        sleep(1)    
         
         try:
             sql = f'''update invo set id_pp = 0 where id_pp = {id_pp}'''
@@ -246,7 +246,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
                 confirmacao = True
                 
                 print(f'\nREMOVENDO A INVOCAÇÃO PERSONAGEM DE ID: {id_pp}...')
-                sleep(3)   
+                sleep(1)   
                 try:
 
                     sql = f'''update invo set id_pp = 0 where id_invo = {id_invo}'''
@@ -266,7 +266,7 @@ def remover_jinchuriki(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, 
         id_player = p_id_player
 
         print(f'\nREMOVENDO AS BIJUU(S) DO(S) PERSONAGEM(S) DO PLAYER DE ID: {id_player}...')
-        sleep(3)  
+        sleep(1)  
 
         try:
             sql = f'''update bijuu set id_pp = 0 from pp where pp.id_player = {id_player}'''
@@ -284,7 +284,7 @@ def remover_jinchuriki(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, 
         id_pp = p_id_pp
         
         print(f'\nREMOVENDO AS BIJJUS PERSONAGEM DE ID: {id_pp}...')
-        sleep(3)    
+        sleep(1)    
         
         try:
             sql = f'''update bijuu set id_pp = 0 where id_pp = {id_pp}'''
@@ -315,7 +315,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
                 confirmacao = True
 
                 print(f'\nREMOVENDO A BIJJU DO PERSONAGEM ID: {id_pp}...')
-                sleep(3) 
+                sleep(1) 
                 try:
 
                     sql = f'''update bijuu set id_pp = 0 where id_bijuu = {id_bijuu}'''
@@ -336,7 +336,7 @@ def remover_reen(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, p_id_p
         id_player = p_id_player
 
         print(f'\nREMOVENDO AS REENCARNAÇÃO(ÕES) DO(S) PERSONAGEM(S) DO PLAYER DE ID: {id_player}...')
-        sleep(3)
+        sleep(1)
 
         try:
             sql = f'''update reen set id_pp = 0 from pp where pp.id_player = {id_player}'''
@@ -354,7 +354,7 @@ def remover_reen(p_remover_player = 0, p_id_player = 0, p_remover_pp = 0, p_id_p
         id_pp = p_id_pp
         
         print(f'\nREMOVENDO A REENCARNAÇÃO DO PERSONAGEM DE ID: {id_pp}...')
-        sleep(3)    
+        sleep(1)    
         
         try:
             sql = f'''update reen set id_pp = 0 where id_pp = {id_pp}'''
@@ -386,7 +386,7 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
                 confirmacao = True
                 
                 print(f'\nREMOVENDO A REENCARNAÇÃO DO PERSONAGEM DE ID: {id_pp}...')
-                sleep(3)
+                sleep(1)
                 
                 try:
                     sql = f'''update reen set id_pp = 0 where id_reen = {id_reen}'''
