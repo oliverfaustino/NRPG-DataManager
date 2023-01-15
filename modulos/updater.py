@@ -1,6 +1,5 @@
 import pandas as pd
 from modulos.conecao import *
-from modulos.utils import select
 
 
 # atualizar os invo

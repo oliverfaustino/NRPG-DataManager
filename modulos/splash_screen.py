@@ -1,6 +1,5 @@
 from time import sleep
 from modulos.info import *
-from modulos.query import query
 
 
 def splash_screen(segundos = 3):

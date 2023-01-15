@@ -155,7 +155,7 @@ def add_invo():
         print(select('Select * from invo order by id_invo asc')) # select para mostrar as invos, seus id e dono
 
         print('\nSOBRE O iNVOCADOR A SER REGISTRADO:')
-        id_invo = int(input('Digite o ID da invo: '))
+        id_invo = float(input('Digite o ID da invo: '))
         select('Select id_pp, nome from pp')
         id_pp = float(input('Digite o id do pp: ')) 
         sql = f"update invo set id_pp = {id_pp} where id_invo = {id_invo}"

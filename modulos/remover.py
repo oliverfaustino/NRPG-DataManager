@@ -60,7 +60,6 @@ Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
 
 # esse parâmetro dado dentro da função serve para identificar quando que, na função remover_player foi confirmada a execução. Naturalmente ela é sempre 0, mas quando o remover_player chama essa função, ele dá o parâmetro p_remover_player como 1 e o p_id_player como o id_player dado na função, assim a função analisa quando o valor p_remover_player é igual a 1 e se for, ela executa a remoção do personagem. Quando a função remover_pp é chamada sem o gatilho da remover_player ela acaba repetindo a mesma lógica nas outras funções, pois para remover o pp por completo, ele não pode estar em relação com nenhuma outra tabela. Caso ela seja chamada pelo remover_player, isso não precisará ocorrer, pois as outras tabelas serão chamadas primeiro.
 def remover_pp(p_remover_player = 0, p_id_player = 0):
-
     if p_remover_player == 1:
         id_player = p_id_player
         
@@ -76,42 +75,43 @@ def remover_pp(p_remover_player = 0, p_id_player = 0):
         except:
             print('PERSONAGEM REMOVIDO COM SUCESSO!')
             pass 
-    
-    else:          
-        confirmacao = True
-    
+        
+    else:
+        confirmacao = False
+            
         while confirmacao == False:
-            print(select('select id_pp, id_player, nome, aparencia, base_1, base_2, base_3, cla_1, cla_2, cla_3, id_afiliacao, id_patente, id_cargo, data_criacao from pp order by id_pp'))
-
-            print('\nSOBRE O PERSONAGEM A SER REMOVIDO:')
-            id_pp = int(input('Digite o id do personagem: '))
-        
-            confirmacao_pp = input(f'''\nEstá correto?
-Isso é uma ação delicada, irá excluir tudo sobre esse personagem de id = {id_pp}. 
-
-Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
-        
-            if confirmacao_pp == '1':
-                confirmacao = True
+            print(select('select id_pp, nome, aparencia from pp order by id_pp'))
                 
+            print('\nSOBRE O PERSONAGEM A SER REMOVIDO:')
+            id_pp = float(input('Digite o id do pp: '))
+            
+            confirmacao_player = input(f'''Está correto? 
+        Isso é uma ação delicada, irá excluir tudo sobre esse pp de id = {id_pp}. 
+
+        Deseja continuar? "1" para "sim" e qualquer letra para "não": ''')
+
+            if confirmacao_player == '1':
+                confirmacao = True
+                    
+                    # chama todas as funções de remover para assegurar que não sobre nada sobre esse player, logo, nada sobre o seu personagem também, para assim o player ser removido completamente
+
                 remover_reen(p_remover_pp = 1, p_id_pp = id_pp)
                 remover_jinchuriki(p_remover_pp = 1, p_id_pp = id_pp)
                 remover_invo(p_remover_pp = 1, p_id_pp = id_pp)
                 remover_usuario(p_remover_pp = 1, p_id_pp = id_pp)
                 
-                print(f'\nREMOVENDO PERSONAGEM DO PLAYER DE ID: {id_player}...')
+
+                print(f'\nREMOVENDO PERSONAGEM DE ID: {id_pp}...')
                 sleep(1)
-                try:
-                  
+                try: 
                     sql = f'''DELETE FROM pp WHERE id_pp = {id_pp}'''
                     pd.read_sql_query(sql, con=engine)
-
                     print('PERSONAGEM REMOVIDO COM SUCESSO!')
                 except:
                     print('PERSONAGEM REMOVIDO COM SUCESSO!')
                     pass
-
-    return 
+        return sql
+        
 
 
 """ITENS"""

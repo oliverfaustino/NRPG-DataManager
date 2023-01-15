@@ -21,7 +21,7 @@ from modulos.info import *
 from modulos.utils import *
 from modulos.adder import *
 from modulos.updater import *
-from modulos.remover import *
+from modulos.remover import remover_jinchuriki,remover_player,remover_pp,remover_reen,remover_usuario
 
 
 # função inicial. Responsável por saber o primeiro interesse do usuário, seja adicionar
